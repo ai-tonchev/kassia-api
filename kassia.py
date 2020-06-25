@@ -430,8 +430,8 @@ class Kassia:
                            onFirstPage=self.draw_header_footer,
                            onEvenPages=self.draw_header_footer,
                            onOddPages=self.draw_header_footer)
-        except IOError:
-            logging.error("Could not save XML file.")
+        except IOError as ioerror:
+            logging.error("Could not save XML file {}".format(ioerror))
 
     def replace_neume_names(self, neume_group: List[NeumeBnml], font_lookup: Dict) -> List[NeumeBnml]:
         """Check for conditional neumes and replace them if necessary.
