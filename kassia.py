@@ -133,6 +133,8 @@ class Kassia:
             for neume_style in default_styles.findall('neume-style'):
                 self.parse_neume_style(neume_style)
 
+        self.parse_music(self.bnml)
+
     def parse_para_style(self, para_style: Element):
         """Read paragraph-type styles and save them in stylesheet.
 
