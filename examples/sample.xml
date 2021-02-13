@@ -9,6 +9,9 @@
             <paper-size>letter</paper-size>
             <page-margins top_margin="50" bottom_margin="50" left_margin="60" right_margin="60" />
         </page-layout>
+        <score-layout>
+            <ligatures>true</ligatures>
+        </score-layout>
         <styles>
             <para-style name="title" font_family="Alegreya SC-Bold" font_size="30" color="#0000e6" align="center" space_after="16" />
             <para-style name="h1" font_family="Alegreya-Medium" font_size="16" color="#0000e6" align="center" />

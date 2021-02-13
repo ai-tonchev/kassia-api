@@ -23,7 +23,7 @@ font_classes_schema = Schema({
             Optional('tempo_markings'): [str],
             Optional('chronos'): [str],
             Optional('rests'): [str],
-            Optional('optional_ligatures'): {str: {And('component_glyphs'): [str]}},
+            Optional('optional_ligatures'): {str: {And('name'): str, And('component_glyphs'): str}},
             Optional('conditional_neumes'): {str: {And('base_neume'): list, And('component_glyphs'): list, And('replace_glyph'): str, And('draw_glyph'): str}},
         })
 

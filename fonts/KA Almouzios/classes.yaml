@@ -350,14 +350,16 @@ rests:
 # Optional ligatures that can be turned on or off.
 # There is currently no logic to turn this off.
 optional_ligatures:
-  apos_apos:
+  lig-apos-apos:
+    name:
+      lig-apos-apos
     component_glyphs:
-      - apos
-      - apos
-  ison_apos:
+      apos_apos
+  lig-ison-apos:
+    name:
+      lig-ison-apos
     component_glyphs:
-      - ison
-      - apos
+      ison_apos
 
 # Special glyphs that are applied only if certain conditions are met (base neume matches, component glyphs follow, etc
 # base_neume: possible base neumes for condition to be met

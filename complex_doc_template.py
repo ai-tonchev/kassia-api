@@ -77,6 +77,12 @@ class ComplexDocTemplate(BaseDocTemplate):
         self.width = self._rightMargin - self.leftMargin
         self.height = self._topMargin - self.bottomMargin'''
 
+    def set_ligatures_enabled(self, ligatures_enabled: bool = False):
+        """Sets the whether ligatures are enabled or disabled.
+        :param enable_ligatures: A boolean setting.
+        """
+        self.ligatures_enabled = ligatures_enabled
+    
     @property
     def top(self) -> int:
         """Get the position at the top of the page, taking into account margins.

@@ -167,7 +167,7 @@ peta_chamU_chamU2:
 peta_aposU_chamU2_chamU3:
   family: "KA New Stathis Main"
   codepoint: O
-ison_apos:
+lig-ison-apos:
   family: "KA New Stathis Main"
   codepoint: P
   description: "ligature of ison and apostrophos"
@@ -254,7 +254,7 @@ antiD2:
 spec-antiD2-haplD2:
   family: "KA New Stathis Main"
   codepoint: K
-apos_apos:
+lig-apos-apos:
   family: "KA New Stathis Main"
   codepoint: L
   description: "ligature of two apostrophoi"

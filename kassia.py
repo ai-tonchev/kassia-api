@@ -120,6 +120,16 @@ class Kassia:
                     margin_dict = self.fill_attribute_dict(page_margins.attrib)
                     self.doc.set_margins(margin_dict)
 
+            score_layout = defaults.find('score-layout')
+            if score_layout is not None:
+                ligatures = score_layout.find('ligatures')
+                if ligatures is not None:
+                    try:
+                        ligs_enabled = bool(ligatures.text)
+                        self.doc.set_ligatures_enabled(ligs_enabled)
+                    except ValueError as ve:
+                        logging.warning("{} warning: {}".format("Error reading default ligature setting.", ve))
+
             # Read and set default document styles
             default_styles = defaults.find('styles')
             for para_style in default_styles.findall('para-style'):
@@ -444,7 +454,7 @@ class Kassia:
                 neumes_str = neumes_str.replace(conditional['replace_glyph'], conditional['draw_glyph'])
                 break
 
-        new_replaced_neume_group_str = self._replace_ligatures(neumes_str, font_lookup)
+        new_replaced_neume_group_str = self._replace_ligatures(neumes_str, font_lookup, self.doc.ligatures_enabled)
         fixed_neume_group = self.convert_strlist_to_neumegroup(new_replaced_neume_group_str, font_lookup['classes'])
 
         return list(fixed_neume_group)
@@ -493,7 +503,7 @@ class Kassia:
         return neume_group
 
     @staticmethod
-    def _replace_ligatures(neume_chunk_name: str, neume_config: Dict) -> List[str]:
+    def _replace_ligatures(neume_chunk_name: str, neume_config: Dict, optional_ligatures_enabled: bool) -> List[str]:
         """Tries to replace neume combinations with ligatures within a neume group.
 
         Works by chopping off the last neume in the chunk and checking
@@ -501,9 +511,18 @@ class Kassia:
 
         param: neume_chunk_name: Name of neume chunk (neume names joined by underscores).
         param: neume_config: Font configuration information from yaml.
+        param: optional_ligatures_enabled: Whether optional ligatures should be used in classes.yaml.
         returns: List of neume names, with neume ligatures used.
         todo: Add additional check for ligatures from first neume towards back.
         """
+        # Substitute optional ligatures
+        if optional_ligatures_enabled:
+            for lig in neume_config['classes']['optional_ligatures'].values():
+                if lig['component_glyphs'] in neume_chunk_name:
+                    neume_chunk_name = neume_chunk_name.replace(lig['component_glyphs'], lig['name'])
+                    break
+
+        # Substitute built-in "ligatures"
         possible_lig = neume_chunk_name
         neume_list = []
         while possible_lig.count('_') >= 1:
