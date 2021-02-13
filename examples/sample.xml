@@ -124,7 +124,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric>-</lyric>
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
@@ -536,11 +536,6 @@
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">apos</neume>
-                </neume-group>
-            </syllable>
-            <syllable>
-                <lyric>_</lyric>
-                <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
@@ -879,11 +874,6 @@
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">apos</neume>
-                </neume-group>
-            </syllable>
-            <syllable>
-                <lyric>_</lyric>
-                <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
