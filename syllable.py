@@ -3,6 +3,7 @@ from typing import Tuple
 from reportlab.platypus import Flowable
 
 from lyric import Lyric
+from neume import Neume
 from neume_chunk import NeumeChunk
 
 
@@ -41,19 +42,40 @@ class Syllable(Flowable):
             canvas.drawString(pos_x, self.neume_chunk_pos[1], neume.char)
         canvas.restoreState()
 
-        if self.lyric and self.lyric.text != '_':
+        if self.lyric and self.lyric.text:
             canvas.setFillColor(self.lyric.color)
             canvas.setFont(self.lyric.font_family, self.lyric.font_size)
             canvas.drawString(self.lyric_pos[0], self.lyric_pos[1], self.lyric.text)
 
-    def has_lyric_text(self, text: str):
-        if self.lyric and self.lyric.text == text:
-            return True
-        else:
-            return False
+    def has_lyric_text(self) -> bool:
+        return bool(self.lyric and self.lyric.text is not None)
 
-    def get_base_neume(self):
+    def has_connector_type(self) -> bool:
+        return bool(self.lyric and self.lyric.connector is not None)
+
+    def contains_lyric_text(self, text: str) -> bool:
+        return bool(self.lyric and self.lyric.text == text)
+
+    def contains_connector_type(self, text: str) -> bool:
+        return bool(self.lyric and self.lyric.connector == text)
+
+    @property
+    def base_neume(self) -> Neume:
         """Returns the base neume of a chunk.
         """
         return self.neume_chunk.base_neume
 
+    @property
+    def lyric_text(self) -> float:
+        """Returns the lyric offset of the base neume of a chunk.
+        """
+        if self.lyric:
+            return self.lyric.text
+        else:
+            return None
+    
+    @property
+    def lyric_offset(self) -> float:
+        """Returns the lyric offset of the base neume of a chunk.
+        """
+        return self.neume_chunk.lyric_offset

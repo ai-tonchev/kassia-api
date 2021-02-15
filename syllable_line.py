@@ -5,6 +5,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import Flowable
 
+from lyric import Lyric
 from syllable import Syllable
 
 
@@ -33,58 +34,94 @@ class SyllableLine(Flowable, collections.MutableSequence):
 
         for syl in self.list:
             syl.draw(canvas)
-        self.draw_underscore(canvas)
 
-    def draw_underscore(self, canvas):
-        for i in range(0, len(self.list)-1):
-            syl = self.list[i]
-            next_syl = self.list[i+1]
-            x1, x2 = None, None  # Starting x pos for underscore
+        self.draw_extenders(canvas)
 
-            # Starting line with underscore
-            if i == 0 and syl.has_lyric_text('_'):
-                x1 = syl.neume_chunk_pos[0]
-            # When next syllable will be underscore
-            elif next_syl.has_lyric_text('_'):
-                # Make sure not a martyria or other special case
-                if syl.lyric:
-                    lyric_space_width = pdfmetrics.stringWidth(' ', syl.lyric.font_family, syl.lyric.font_size)
-                    x1 = syl.lyric_pos[0] + syl.lyric.width + lyric_space_width
-                else:
-                    x1 = syl.neume_chunk_pos[0]
+    def draw_extenders(self, canvas):
+        """Draw extenders (dash, underscore, etc.) connecting two or more sets of lyrics in the line.
 
-            if x1 is not None:
-                x2, i = self.recurse_last_underscore_pos(i)
-                y1, y2 = (syl.lyric_pos[1], syl.lyric_pos[1])
-                if syl.lyric:
-                    canvas.setStrokeColor(syl.lyric.color)
-                    canvas.setFont(syl.lyric.font_family, syl.lyric.font_size)
-                canvas.line(x1, y1, x2, y2)
+        Loop through syllables in list. Begin extender if necessary.
+        When encountering new lyric, end current extender and begin new one.
+        Keep adding end of neume pos as end of extender.
+        Draw extender if get to end of line.
 
-    def recurse_last_underscore_pos(self, index: int) -> Tuple[float, int]:
-        curr_syl = self.list[index]
+        :param canvas: The canvas to draw extender on.
+        """
+        starting_lyric, x1, x2, y1, y2 = None, None, None, None, None
+        for i, syl in enumerate(self.list):
+            if syl.contains_connector_type('u'):
+                # Begin extender if necessary
+                if x1 is None:
+                    starting_lyric = syl.lyric
+                    y1, y2 = (syl.lyric_pos[1], syl.lyric_pos[1])
 
-        # Check if at end of line
-        if index + 1 >= len(self.list):
-            x2 = curr_syl.neume_chunk_pos[0] + curr_syl.width
-            return x2, index
+                    # If starting new line with extender, begin extender at front of neume
+                    # Otherwise begin right after current lyric
+                    if i == 0 and syl.lyric.text is None:
+                        x1 = syl.neume_chunk_pos[0]
+                    else:
+                        x1 = self._get_extender_start_position(syl)
+                
+                # If encounter new lyric, end current extender and start new one
+                if syl.lyric.text is not None and x2:
+                    # If syneches elafron, special case
+                    if syl.lyric_offset:
+                        x2 = self._get_special_extender_end_position(syl)
+                    self._draw_extender(canvas, x1, y1, x2, y2, starting_lyric)
+                    starting_lyric = syl.lyric
+                    x1 = self._get_extender_start_position(syl)
+                
+                # Set extender end to ending position of neume
+                x2 = self._get_extender_end_position(syl)
 
-        next_syl = self.list[index+1]
-        next_neume = next_syl.get_base_neume()
+            # If no more extender connection, end and draw it
+            elif x1 is not None and x2 is not None:
+                if syl.base_neume.name == 'syne' and x1:
+                    x2 = self._get_special_extender_end_position(syl)
+                self._draw_extender(canvas, x1, y1, x2, y2, starting_lyric)
+                x1, x2 = None, None
+        
+        # If extender goes to end of line
+        if x1 is not None:
+            self._draw_extender(canvas, x1, y1, x2, y2, starting_lyric)
 
-        # Check if next neume is syneches elaphron
-        # Underscore should extend beneath apostrophos part of neume
-        if next_neume.name == "syne":
-            x2 = next_syl.neume_chunk_pos[0] + next_neume.lyric_offset
-            return x2, index
+    @staticmethod
+    def _get_extender_start_position(syl: Syllable) -> float:
+        """Return extender starting position (x position), after lyric.
 
-        # Check for end of underscores
-        if not next_syl.has_lyric_text('_'):
-            x2 = curr_syl.neume_chunk_pos[0] + curr_syl.width
-            return x2, index
-        else:
-            index += 1
-            return self.recurse_last_underscore_pos(index)
+        :param syl: Current syllable.
+        """
+        lyric_space_width = pdfmetrics.stringWidth(' ', syl.lyric.font_family, syl.lyric.font_size)
+        return syl.lyric_pos[0] + syl.lyric.width + lyric_space_width
+    
+    @staticmethod
+    def _get_extender_end_position(syl: Syllable) -> float:
+        """Return extender end position (x position), which is at end of neume (neume width).
+
+        :param syl: Current syllable.
+        """
+        return syl.neume_chunk_pos[0] + syl.width
+    
+    @staticmethod
+    def _get_special_extender_end_position(syl: Syllable) -> float:
+        """Return extender end position when special lyric offset.
+        :param syl: Current syllable.
+        """
+        return syl.neume_chunk_pos[0] + syl.lyric_offset
+    
+    def _draw_extender(self, canvas: Canvas, x1: float, y1: float, x2: float, y2: float, starting_lyric: Lyric):
+        """Draw an extender (dash, underscore, etc.) connecting two or more sets of lyrics.
+        :param canvas: The canvas to draw extender to.
+        :param x1: Start of extender, x coordinate.
+        :param y1: Start of extender, y coordinate.
+        :param x2: End of extender, x coordinate.
+        :param y2: End of extender, y coordinate.
+        :param starting_syllable: Syllable which starts the extender.
+        """
+        if x1 is not None and x2 is not None:
+            canvas.setStrokeColor(starting_lyric.color)
+            canvas.setFont(starting_lyric.font_family, starting_lyric.font_size)
+            canvas.line(x1, y1, x2, y2)
 
     def set_size(self):
         if self.list:

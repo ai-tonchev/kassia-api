@@ -71,7 +71,7 @@
         <score>
             <dropcap>L</dropcap>
             <syllable>
-                <lyric>Lord</lyric>
+                <lyric con="u">Lord</lyric>
                 <neume-group> <!-- type = ordinary, martyria, or chronagogic -->
                     <neume>bare</neume> <!-- type = primary, linking, chronos, or martyria; 'secondary' is assumed if nothing specified -->
                     <neume type="primary">olig</neume>
@@ -79,7 +79,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
@@ -97,7 +97,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>cried</lyric>
+                <lyric con="u">cried</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>ken2U</neume>
@@ -105,13 +105,13 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
@@ -132,7 +132,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>to</lyric>
+                <lyric con="u">to</lyric>
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">ison</neume>
@@ -141,20 +141,20 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>Thee</lyric>
+                <lyric con="u">Thee</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>oligU</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume>klasU</neume>
@@ -203,13 +203,13 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>to</lyric>
+                <lyric con="u">to</lyric>
                 <neume-group>
                     <neume>syne</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>antiD</neume>
@@ -217,7 +217,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
@@ -259,7 +259,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>to</lyric>
+                <lyric con="u">to</lyric>
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">apos</neume>
@@ -267,20 +267,20 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>me</lyric>
+                <lyric con="u">me</lyric>
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u"/>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>ken2DR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u"/>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>ken2U</neume>
@@ -288,7 +288,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>O</lyric>
+                <lyric con="u">O</lyric>
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">apos</neume>
@@ -296,14 +296,14 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>hypo</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>antiD</neume>
@@ -311,7 +311,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
@@ -350,7 +350,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>cried</lyric>
+                <lyric con="u">cried</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>ken2U</neume>
@@ -359,13 +359,13 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
@@ -379,26 +379,26 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>to</lyric>
+                <lyric con="u">to</lyric>
                 <neume-group>
                     <neume>syne</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ken2</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>Thee</lyric>
+                <lyric con="u">Thee</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>oligU</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume>diplD</neume>
@@ -420,13 +420,13 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>en</lyric>
+                <lyric con="u">en</lyric>
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
@@ -439,7 +439,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>to</lyric>
+                <lyric con="u">to</lyric>
                 <neume-group>
                     <neume>apos</neume>
                     <neume>antiD</neume>
@@ -447,28 +447,28 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>me</lyric>
+                <lyric con="u">me</lyric>
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">olig</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>hypo</neume>
                     <neume type="chronos">digoUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>klasU</neume>
@@ -507,33 +507,33 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>voice</lyric>
+                <lyric con="u">voice</lyric>
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>psefD</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>hypo</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>of</lyric>
+                <lyric con="u">of</lyric>
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">apos</neume>
@@ -542,7 +542,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
@@ -645,7 +645,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>cry</lyric>
+                <lyric con="u">cry</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>ken2U</neume>
@@ -654,13 +654,13 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
@@ -674,26 +674,26 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>to</lyric>
+                <lyric con="u">to</lyric>
                 <neume-group>
                     <neume>syne</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ken2</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>Thee</lyric>
+                <lyric con="u">Thee</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>oligU</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume>diplD</neume>
@@ -740,19 +740,19 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>me</lyric>
+                <lyric con="u">me</lyric>
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ken2</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>peta</neume>
                     <neume>klasD</neume>
@@ -760,14 +760,14 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>O</lyric>
+                <lyric con="u">O</lyric>
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">ison</neume>
@@ -775,14 +775,14 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>hypo</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>antiD</neume>
@@ -790,7 +790,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
@@ -838,27 +838,27 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>pray'r</lyric>
+                <lyric con="u">pray'r</lyric>
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume type="linking">psefD</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>hypo</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
@@ -871,7 +871,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>set</lyric>
+                <lyric con="u">set</lyric>
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">apos</neume>
@@ -880,7 +880,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
@@ -933,27 +933,27 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>fore</lyric>
+                <lyric con="u">fore</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>aposU</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>isonUL</neume>
@@ -962,14 +962,14 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
@@ -1017,7 +1017,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>up</lyric>
+                <lyric con="u">up</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>ken2U</neume>
@@ -1025,19 +1025,19 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>of</lyric>
+                <lyric con="u">of</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>aposU</neume>
@@ -1045,13 +1045,13 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>my</lyric>
+                <lyric con="u">my</lyric>
                 <neume-group>
                     <neume>syne</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ken2</neume>
                 </neume-group>
@@ -1156,19 +1156,19 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>me</lyric>
+                <lyric con="u">me</lyric>
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ken2</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>peta</neume>
                     <neume>klasD</neume>
@@ -1176,14 +1176,14 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>O</lyric>
+                <lyric con="u">O</lyric>
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">ison</neume>
@@ -1191,14 +1191,14 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>hypo</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>antiD</neume>
@@ -1206,7 +1206,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
@@ -1384,19 +1384,19 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>fess</lyric>
+                <lyric con="u">fess</lyric>
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ken2</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>peta</neume>
                     <neume>klasD</neume>
@@ -1404,14 +1404,14 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>Thy</lyric>
+                <lyric con="u">Thy</lyric>
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">ison</neume>
@@ -1419,14 +1419,14 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>hypo</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>antiD</neume>
@@ -1434,7 +1434,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume>klasU</neume>

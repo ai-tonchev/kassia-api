@@ -342,11 +342,13 @@ class Kassia:
         lyrics_style = self.scoreStyleSheet['lyric']
         attribs_from_bnml = self.fill_attribute_dict(lyric_elem.attrib)
         lyrics_style = self.merge_paragraph_styles(lyrics_style, attribs_from_bnml)
-        return Lyric(text=lyric_elem.text.strip(),
+        lyric_text = lyric_elem.text.strip() if lyric_elem.text else None
+        return Lyric(text=lyric_text,
                      font_family=lyrics_style.fontName,
                      font_size=lyrics_style.fontSize,
                      color=lyrics_style.textColor,
-                     top_margin=lyrics_style.spaceBefore)
+                     top_margin=lyrics_style.spaceBefore,
+                     connector=attribs_from_bnml.get('con'))
 
     def _parse_neume_group(self, neume_group_elem: Element) -> NeumeChunk:
         """Read neume-group element in bnml and create NeumeChunk object.

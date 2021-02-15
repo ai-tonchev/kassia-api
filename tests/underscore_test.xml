@@ -15,9 +15,7 @@
         </styles>
     </defaults>
     <music>
-        <para>
-            Underscore starts on next line
-        </para>
+        <para>Extender starts on last word and continues to new line</para>
         <score>
             <dropcap>A</dropcap>
             <syllable>
@@ -69,37 +67,37 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>e</lyric>
+                <lyric>three</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>e</lyric>
+                <lyric>two</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>e</lyric>
+                <lyric>one</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>e</lyric>
+                <lyric con="u" word_pos="i">go!</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" word_pos="m" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" word_pos="e" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
@@ -108,9 +106,7 @@
 
         <linebreak />
 
-        <para>
-            Underscore across Line Break
-        </para>
+        <para>Extender across line break</para>
         <score>
             <dropcap>A</dropcap>
             <syllable>
@@ -138,7 +134,13 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>across</lyric>
+                <lyric>a-</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>cross</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
@@ -156,43 +158,37 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>break</lyric>
+                <lyric con="u">break</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
-                <neume-group>
-                    <neume>ison</neume>
-                </neume-group>
-            </syllable>
-            <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
@@ -201,18 +197,16 @@
 
         <linebreak />
 
-        <para>
-            Begin with Underscore
-        </para>
+        <para>Begin with extender</para>
         <score>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
@@ -221,54 +215,29 @@
 
         <linebreak />
 
-        <!--para>
-            Extra Underscores Should Not be Drawn
-        </para>
+        <para>Extender across martyria</para>
         <score>
             <syllable>
-                <lyric>la</lyric>
+                <lyric con="u">la</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
-            </syllable>
-            <syllable>
-                <lyric>_</lyric>
-            </syllable>
-        </score-->
-
-        <para>
-            Underscore across Martyria
-        </para>
-        <score>
-            <syllable>
-                <lyric>la</lyric>
-                <neume-group>
-                    <neume>ison</neume>
-                </neume-group>
-            </syllable>
-            <syllable>
-                <lyric>_</lyric>
-                <neume-group>
-                    <neume>ison</neume>
-                </neume-group>
-            </syllable>
-            <syllable>
+                <lyric con="u" />
                 <neume-group>
                     <neume color="#00FF0F" type="martyria">malfa</neume>
                     <neume color="#00FF0F" type="martyria">mpaU</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
@@ -277,77 +246,234 @@
 
         <linebreak />
 
-        <para>
-            Underscore Color
-        </para>
+        <para>Extender stop before martyria</para>
+        <score>
+            <syllable>
+                <lyric con="u">la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric />
+                <neume-group>
+                    <neume color="#00FF0F" type="martyria">malfa</neume>
+                    <neume color="#00FF0F" type="martyria">mpaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <score>
+            <syllable>
+                <lyric con="u">la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric />
+                <neume-group>
+                    <neume color="#00FF0F" type="martyria">malfa</neume>
+                    <neume color="#00FF0F" type="martyria">mpaU</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <linebreak />
+
+        <para>Multiple extenders on same line</para>
+        <score>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u">la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u">la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u">la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <linebreak />
+
+        <para>Variable length extenders</para>
+        <score>
+            <syllable>
+                <lyric con="u">one</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u">two</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u">three</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u">four</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <linebreak />
+
+        <para>Extender color (second should be green)</para>
         <score>
             <syllable>
                 <lyric>default</lyric>
                 <neume-group>
-                    <neume color="#00FFF0">ison</neume>
+                    <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>color</lyric>
+                <lyric con="u">color</lyric>
                 <neume-group>
-                    <neume color="#00FFF0">ison</neume>
+                    <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
+                <lyric con="u" />
                 <neume-group>
-                    <neume type="martyria" color="#EF0000">malfa</neume>
-                    <neume type="martyria" color="#EF0000">mpaU</neume>
+                    <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric color="#0FF000" con="u">green</lyric>
                 <neume-group>
-                    <neume color="#F0F030">ison</neume>         
+                    <neume>ison</neume>         
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
-                    <neume color="#F0F030">ison</neume>         
+                    <neume>ison</neume>         
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric>default</lyric>
                 <neume-group>
-                    <neume color="#F0F030">ison</neume>         
+                    <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric color="#0FF000">green</lyric>
+                <lyric con="u">color</lyric>
                 <neume-group>
-                    <neume color="#0FF000">ison</neume>         
+                    <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>_</lyric>
+                <lyric con="u" />
                 <neume-group>
-                    <neume color="#0FF000">ison</neume>         
-                </neume-group>
-            </syllable>
-            <syllable>
-                <lyric>_</lyric>
-                <neume-group>
-                    <neume color="#0FF000">ison</neume>         
-                </neume-group>
-            </syllable>
-            <syllable>
-                <lyric>_</lyric>
-                <neume-group>
-                    <neume color="#0FF000">ison</neume>         
+                    <neume>ison</neume>
                 </neume-group>
             </syllable>
         </score>
 
         <linebreak />
 
-        <para>
-            Underscore to Syneches Elaphron
-        </para>
+        <para>Extender to syneches elafron</para>
         <score>
             <syllable>
                 <lyric>la</lyric>
@@ -356,13 +482,114 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>la_</lyric>
+                <lyric con="u">la</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
                 <lyric>la</lyric>
+                <neume-group>
+                    <neume>syne</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <linebreak />
+
+        <para>Extender after syneches elafron</para>
+        <score>
+            <syllable>
+                <lyric>un-</lyric>
+                <neume-group>
+                    <neume>peta</neume>
+                    <neume>aposU</neume>
+                    <neume>klasD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>to</lyric>
+                <neume-group>
+                    <neume>syne</neume>
+                    <neume>klasU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u">me</lyric>
+                <neume-group>
+                    <neume>olig</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ken2</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <linebreak />
+
+        <para>Extender before and after syneches elafron</para>
+        <score>
+            <syllable>
+                <lyric con="u">of</lyric>
+                <neume-group>
+                    <neume>peta</neume>
+                    <neume>aposU</neume>
+                    <neume>klasD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u">my</lyric>
+                <neume-group>
+                    <neume>syne</neume>
+                    <neume>klasU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>ken2</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <linebreak />
+        
+        <para>Weird special case</para>
+        <score>
+            <syllable>
+                <lyric con="u">cried</lyric>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2U</neume>
+                    <neume>psefD</neume>
+                    <neume type="accidental">flatU2R2</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>apos</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric con="u" />
+                <neume-group>
+                    <neume>apos</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>un-</lyric>
+                <neume-group>
+                    <neume>peta</neume>
+                    <neume>aposU</neume>
+                    <neume>klasD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>to</lyric>
                 <neume-group>
                     <neume>syne</neume>
                 </neume-group>

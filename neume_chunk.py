@@ -2,6 +2,8 @@ import collections
 
 from reportlab.pdfbase import pdfmetrics
 
+from neume import Neume
+
 
 class NeumeChunk(collections.MutableSequence):
     """A collection of Neumes, but with a calculated width and height.
@@ -10,7 +12,7 @@ class NeumeChunk(collections.MutableSequence):
     def __init__(self, *args):
         self.width: float = 0
         self.height: float = 0
-        self.base_neume: str or None = None
+        self.base_neume: Neume or None = None
         self.takes_lyric: bool = False  # whether some neume in the chunk could take a lyric
         self.list = []
         self.extend(list(args))
@@ -64,3 +66,11 @@ class NeumeChunk(collections.MutableSequence):
                 self.base_neume = self.list[0]
         except IndexError:
             return
+
+    @property
+    def lyric_offset(self) -> float:
+        """Get the position at the bottom of the page, taking into account margins.
+        The bottom of the page is essentially 0 (plus any bottom margins).
+        :return: Position at bottom of the page.
+        """
+        return self.base_neume.lyric_offset
