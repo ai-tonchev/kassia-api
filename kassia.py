@@ -129,6 +129,8 @@ class Kassia:
                         self.doc.set_ligatures_enabled(ligs_enabled)
                     except ValueError as ve:
                         logging.warning("{} warning: {}".format("Error reading default ligature setting.", ve))
+            else:
+                self.doc.set_ligatures_enabled(False)
 
             # Read and set default document styles
             default_styles = defaults.find('styles')
