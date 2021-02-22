@@ -18,9 +18,9 @@
             <para-style name="verse" font_family="Alegreya-Medium" font_size="14" color="#000000" align="left" first_line_indent="20" space_after="15" leading="17" />
             <para-style name="header" font_family="Alegreya-Italic" font_size="8" color="#0000e6" align="center" border_width="1.0" border_color="#0000e6" border_padding="10" />
             <para-style name="footer" font_family="Alegreya-Italic" font_size="8" color="#0000e6" align="center" border_width="1.0" border_color="#0000e6" border_padding="10" />
-            <para-style name="centered-martyria" font_family="Alegreya-Medium" font_size="14" color="#cf232b" align="center" />
-            <para-style name="tempo-marking" font_family="Alegreya-Medium" font_size="14" color="#cf232b" align="right" space_after="25" />
-            <para-style name="hymn-name" font_family="Alegreya-Medium" font_size="14" color="#0000e6" align="right" />
+            <para-style name="centered-martyria" font_family="Alegreya-Medium" font_size="14" color="#cf232b" align="center" space_before="12" space_after="12" />
+            <para-style name="tempo-marking" font_family="Alegreya-Medium" font_size="14" color="#cf232b" align="right" space_before="18" space_after="23" />
+            <para-style name="hymn-name" font_family="Alegreya-Medium" font_size="14" color="#0000e6" align="right" space_before="10" space_after="4" />
             <score-style font_family="KA New Stathis" font_size="30" align="justify" word_spacing="4" leading="60" />
             <neume-style type="ordinary" color="#000000" />
             <neume-style type="accidental" color="#cf232b" />
@@ -1414,7 +1414,7 @@
                 <lyric>Thy</lyric>
                 <neume-group>
                     <neume>bare</neume>
-                    <neume>ison</neume>
+                    <neume type="primary">ison</neume>
                     <neume>klasU</neume>
                 </neume-group>
             </syllable>
