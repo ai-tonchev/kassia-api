@@ -26,9 +26,11 @@ class SyllableLine(Flowable, collections.MutableSequence):
 
     def draw(self, canvas: Canvas = None):
         """This class is overloaded from Flowable's draw function.
-        :param canvas: The canvas. This only gets passed to draw when called by Score directly.
-        If a troparion gets split, platypus will treat the syllableLine as a Flowable and call draw without
+
+        Note: If a troparion gets split, platypus will treat the syllableLine as a Flowable and call draw without
         any parameters.
+
+        :param canvas: The canvas. This only gets passed to draw when called by Score directly.
         """
         if not canvas:
             canvas = self.canv
@@ -62,7 +64,7 @@ class SyllableLine(Flowable, collections.MutableSequence):
                         x1 = syl.neume_chunk_pos[0]
                     else:
                         x1 = self._get_extender_start_position(syl)
-                
+
                 # If encounter new lyric, end current extender and start new one
                 if syl.lyric.text is not None and x2:
                     # If syneches elafron, special case
@@ -71,7 +73,7 @@ class SyllableLine(Flowable, collections.MutableSequence):
                     self._draw_extender(canvas, x1, y1, x2, y2, starting_lyric)
                     starting_lyric = syl.lyric
                     x1 = self._get_extender_start_position(syl)
-                
+
                 # Set extender end to ending position of neume
                 x2 = self._get_extender_end_position(syl)
 

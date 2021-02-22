@@ -15,23 +15,20 @@ class Syllable(Flowable):
                  neume_chunk_pos: Tuple[float, float] = None,
                  lyric: Lyric = None,
                  lyric_pos: Tuple[float, float] = None,
-                 # fthora: Fthora = None,
-                 # fthora_pos: Tuple = [float, float]
                  ):
         super().__init__()
-        self.neume_chunk = neume_chunk  # A list of neumes, one base neume and some zero width supporting characters
+        self.neume_chunk: NeumeChunk = neume_chunk  # A list of neumes, one base neume and some zero width supporting characters
         self.neume_chunk_pos = neume_chunk_pos if neume_chunk_pos is not None else [0, 0]
         self.lyric: Lyric = lyric
         self.lyric_pos = lyric_pos if lyric_pos is not None else [0, 0]
-        # self.fthora = fthora
-        # self.fthora_pos = fthora_pos if fthora_pos is not None else [0, 0]
-        self.set_size()
+        self.width, self.height = self.calc_size()
         self.category: SyllableType = self.calc_category()
 
-    def set_size(self):
-        self.width = max(getattr(self.neume_chunk, 'width', 0), getattr(self.lyric, 'width', 0))
-        self.height = getattr(self.neume_chunk, 'height', 0)\
+    def calc_size(self) -> float:
+        width = max(getattr(self.neume_chunk, 'width', 0), getattr(self.lyric, 'width', 0))
+        height = getattr(self.neume_chunk, 'height', 0)\
             + getattr(self.lyric, 'height', 0)
+        return width, height
 
     def calc_category(self) -> SyllableType:
         """Calculate syllable category, based on contained neumechunk category.
@@ -64,15 +61,15 @@ class Syllable(Flowable):
     def has_connector_type(self) -> bool:
         return bool(self.lyric and self.lyric.connector is not None)
 
-    def contains_lyric_text(self, text: str) -> bool:
-        return bool(self.lyric and self.lyric.text == text)
+    def contains_lyric_text(self, lyric_text: str) -> bool:
+        return bool(self.lyric and self.lyric.text == lyric_text)
 
-    def contains_connector_type(self, text: str) -> bool:
-        return bool(self.lyric and self.lyric.connector == text)
+    def contains_connector_type(self, connector_type: str) -> bool:
+        return bool(self.lyric and self.lyric.connector == connector_type)
 
     @property
     def base_neume(self) -> Neume:
-        """Returns the base neume of a chunk.
+        """Returns the base neume of the neume chunk.
         """
         return self.neume_chunk.base_neume
 

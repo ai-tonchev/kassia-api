@@ -325,6 +325,10 @@ class Kassia:
         return Dropcap(dropcap_text, dropcap_style.rightIndent, dropcap_style)
 
     def _parse_syllable(self, syl_elem: Element) -> Syllable:
+        """Use syllable info from bnml to create Syllable.
+
+        :param syl_elem: Syllable element in bnml.
+        """
         lyric = None
         neume_group = None
 
@@ -339,6 +343,10 @@ class Kassia:
         return Syllable(neume_chunk=neume_group, lyric=lyric)
 
     def _parse_lyric(self, lyric_elem: Element) -> Lyric:
+        """Use lyric info from bnml to create Lyric.
+        
+        :param lyric_elem: Lyric element in bnml.
+        """
         lyrics_style = self.scoreStyleSheet['lyric']
         attribs_from_bnml = self.fill_attribute_dict(lyric_elem.attrib)
         lyrics_style = self.merge_paragraph_styles(lyrics_style, attribs_from_bnml)
@@ -413,7 +421,7 @@ class Kassia:
             if is_first_in_chunk and neume_name_str != 'bare':
                 neume_cat = NeumeType.primary
             else:
-                logging.info("Neume type not specified for {}. Assuming 'secondary'.".format(neume_name_str))
+                #logging.info("Neume type not specified for {}. Assuming 'secondary'.".format(neume_name_str))
                 neume_cat = NeumeType.secondary
         return NeumeBnml(neume_name_str, neume_cat)
 
