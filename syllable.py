@@ -1,3 +1,4 @@
+from neume_type import NeumeType
 from typing import Tuple
 
 from reportlab.platypus import Flowable
@@ -5,6 +6,7 @@ from reportlab.platypus import Flowable
 from lyric import Lyric
 from neume import Neume
 from neume_chunk import NeumeChunk
+from syllable_type import SyllableType
 
 
 class Syllable(Flowable):
@@ -24,11 +26,20 @@ class Syllable(Flowable):
         # self.fthora = fthora
         # self.fthora_pos = fthora_pos if fthora_pos is not None else [0, 0]
         self.set_size()
+        self.category: SyllableType = self.calc_category()
 
     def set_size(self):
         self.width = max(getattr(self.neume_chunk, 'width', 0), getattr(self.lyric, 'width', 0))
         self.height = getattr(self.neume_chunk, 'height', 0)\
             + getattr(self.lyric, 'height', 0)
+
+    def calc_category(self) -> SyllableType:
+        """Calculate syllable category, based on contained neumechunk category.
+        """
+        if self.base_neume.category == NeumeType.martyria:
+            return SyllableType.martyria
+        else:
+            return SyllableType.ordinary
 
     def draw(self, canvas):
         canvas.saveState()

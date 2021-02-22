@@ -1,4 +1,5 @@
 import collections
+from syllable_type import SyllableType
 from typing import List, Tuple
 
 from reportlab.pdfbase import pdfmetrics
