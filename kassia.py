@@ -12,7 +12,7 @@ from xml.etree.ElementTree import Element, ParseError, parse
 
 import font_reader
 from complex_doc_template import ComplexDocTemplate
-from cursor import Cursor
+from coord import Coord
 from drop_cap import Dropcap
 from syllable_line import SyllableLine
 from syllable import Syllable
@@ -304,7 +304,7 @@ class Kassia:
             dropcap_offset = dropcap.width + dropcap.x_padding
 
         lines_list: List[SyllableLine] = self.line_break(syl_list,
-                                                         Cursor(dropcap_offset, 0),
+                                                         Coord(dropcap_offset, 0),
                                                          self.doc.width,
                                                          self.scoreStyleSheet['score'].leading,
                                                          self.scoreStyleSheet['score'].wordSpace)
@@ -791,7 +791,7 @@ class Kassia:
             elif pagenum_style.alignment == TA_CENTER:
                 canvas.drawCentredString(self.doc.center, y_pos, str(canvas.getPageNumber()))
 
-    def line_break(self, syl_list: List[Syllable], starting_pos: Cursor, line_width: int, line_spacing: int,
+    def line_break(self, syl_list: List[Syllable], starting_pos: Coord, line_width: int, line_spacing: int,
                    syl_spacing: int) -> List[SyllableLine]:
         """Break continuous list of syllables into lines- currently greedy.
         :param syl_list: A list of syllables.
@@ -839,10 +839,10 @@ class Kassia:
                 # center neume
                 adj_neume_pos = (syl.width - neume_width) / 2.
 
-            syl.neume_chunk_pos[0] = cr.x + adj_neume_pos
-            syl.neume_chunk_pos[1] = y_offset/2.
-            syl.lyric_pos[0] = cr.x + adj_lyric_pos
-            syl.lyric_pos[1] = cr.y
+            syl.neume_chunk_pos.x = cr.x + adj_neume_pos
+            syl.neume_chunk_pos.y = y_offset/2.
+            syl.lyric_pos.x = cr.x + adj_lyric_pos
+            syl.lyric_pos.y = cr.y
             cr.x += syl.width + syl_spacing
 
             if new_line:
@@ -876,7 +876,7 @@ class Kassia:
             # Divide by number of chunks in line
             syl_spacing = space_remaining / len(line)
 
-            cr = Cursor(0, 0)
+            cr = Coord(0, 0)
 
             for syl in line:
                 adj_lyric_pos, adj_neume_pos = 0, 0
@@ -898,8 +898,8 @@ class Kassia:
                     # center neume
                     adj_neume_pos = (syl.width - neume_width) / 2.
 
-                syl.neume_chunk_pos[0] = cr.x + adj_neume_pos
-                syl.lyric_pos[0] = cr.x + adj_lyric_pos
+                syl.neume_chunk_pos.x = cr.x + adj_neume_pos
+                syl.lyric_pos.x = cr.x + adj_lyric_pos
 
                 cr.x += syl.width + syl_spacing
 

@@ -56,12 +56,12 @@ class SyllableLine(Flowable, collections.MutableSequence):
                 # Begin extender if necessary
                 if x1 is None:
                     starting_lyric = syl.lyric
-                    y1, y2 = (syl.lyric_pos[1], syl.lyric_pos[1])
+                    y1, y2 = (syl.lyric_pos.y, syl.lyric_pos.y)
 
                     # If starting new line with extender, begin extender at front of neume
                     # Otherwise begin right after current lyric
                     if i == 0 and syl.lyric.text is None:
-                        x1 = syl.neume_chunk_pos[0]
+                        x1 = syl.neume_chunk_pos.x
                     else:
                         x1 = self._get_extender_start_position(syl)
 
@@ -95,7 +95,7 @@ class SyllableLine(Flowable, collections.MutableSequence):
         :param syl: Current syllable.
         """
         lyric_space_width = pdfmetrics.stringWidth(' ', syl.lyric.font_family, syl.lyric.font_size)
-        return syl.lyric_pos[0] + syl.lyric.width + lyric_space_width
+        return syl.lyric_pos.x + syl.lyric.width + lyric_space_width
     
     @staticmethod
     def _get_extender_end_position(syl: Syllable) -> float:
@@ -103,14 +103,14 @@ class SyllableLine(Flowable, collections.MutableSequence):
 
         :param syl: Current syllable.
         """
-        return syl.neume_chunk_pos[0] + syl.width
+        return syl.neume_chunk_pos.x + syl.width
     
     @staticmethod
     def _get_special_extender_end_position(syl: Syllable) -> float:
         """Return extender end position when special lyric offset.
         :param syl: Current syllable.
         """
-        return syl.neume_chunk_pos[0] + syl.lyric_offset
+        return syl.neume_chunk_pos.x + syl.lyric_offset
     
     def _draw_extender(self, canvas: Canvas, x1: float, y1: float, x2: float, y2: float, starting_lyric: Lyric):
         """Draw an extender (dash, underscore, etc.) connecting two or more sets of lyrics.
@@ -128,7 +128,7 @@ class SyllableLine(Flowable, collections.MutableSequence):
 
     def set_size(self):
         if self.list:
-            width = (self.list[-1].neume_chunk_pos[0] + self.list[-1].width) - self.list[0].neume_chunk_pos[0]
+            width = (self.list[-1].neume_chunk_pos.x + self.list[-1].width) - self.list[0].neume_chunk_pos.x
             self.width = width
             max_syl_height = max(syl.height for syl in self.list)
             self.height = max(max_syl_height, self.leading)

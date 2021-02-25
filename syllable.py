@@ -1,26 +1,25 @@
-from neume_type import NeumeType
-from typing import Tuple
-
 from reportlab.platypus import Flowable
 
+from coord import Coord
 from lyric import Lyric
 from neume import Neume
 from neume_chunk import NeumeChunk
+from neume_type import NeumeType
 from syllable_type import SyllableType
 
 
 class Syllable(Flowable):
     def __init__(self,
                  neume_chunk: NeumeChunk = None,
-                 neume_chunk_pos: Tuple[float, float] = None,
+                 neume_chunk_pos: Coord = None,
                  lyric: Lyric = None,
-                 lyric_pos: Tuple[float, float] = None,
+                 lyric_pos: Coord = None,
                  ):
         super().__init__()
         self.neume_chunk: NeumeChunk = neume_chunk  # A list of neumes, one base neume and some zero width supporting characters
-        self.neume_chunk_pos = neume_chunk_pos if neume_chunk_pos is not None else [0, 0]
+        self.neume_chunk_pos: Coord = neume_chunk_pos if neume_chunk_pos is not None else Coord(0,0)
         self.lyric: Lyric = lyric
-        self.lyric_pos = lyric_pos if lyric_pos is not None else [0, 0]
+        self.lyric_pos: Coord = lyric_pos if lyric_pos is not None else Coord(0,0)
         self.width, self.height = self.calc_size()
         self.category: SyllableType = self.calc_category()
 
@@ -40,20 +39,20 @@ class Syllable(Flowable):
 
     def draw(self, canvas):
         canvas.saveState()
-        canvas.translate(self.neume_chunk_pos[0], self.neume_chunk_pos[1])
+        canvas.translate(self.neume_chunk_pos.x, self.neume_chunk_pos.y)
         pos_x: float = 0
         for i, neume in enumerate(self.neume_chunk):
             canvas.setFillColor(neume.color)
             canvas.setFont(neume.font_fullname, neume.font_size)
             if i > 0:
                 pos_x += self.neume_chunk[i - 1].width
-            canvas.drawString(pos_x, self.neume_chunk_pos[1], neume.char)
+            canvas.drawString(pos_x, self.neume_chunk_pos.y, neume.char)
         canvas.restoreState()
 
         if self.lyric and self.lyric.text:
             canvas.setFillColor(self.lyric.color)
             canvas.setFont(self.lyric.font_family, self.lyric.font_size)
-            canvas.drawString(self.lyric_pos[0], self.lyric_pos[1], self.lyric.text)
+            canvas.drawString(self.lyric_pos.x, self.lyric_pos.y, self.lyric.text)
 
     def has_lyric_text(self) -> bool:
         return bool(self.lyric and self.lyric.text is not None)
