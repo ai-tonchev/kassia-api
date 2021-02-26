@@ -1,210 +1,702 @@
 <bnml>
-    <identification>
-        <work-title />
-        <author />
-        <subject />
-    </identification>
     <defaults>
         <page-layout>
             <paper-size>letter</paper-size>
             <page-margins top_margin="50" bottom_margin="50" left_margin="60" right_margin="60" />
         </page-layout>
         <styles>
-            <neumes font_family="KA New Stathis Main" font_size="30" word_spacing="3" leading="60" />
-            <lyrics font_family="Alegreya-Regular" font_size="18" space_before="26" />
-            <dropcap font_family="Alegreya-Regular" font_size="46" />
+            <score-style font_family="KA New Stathis" font_size="30" align="justify" word_spacing="0" leading="60" />
+            <neume-style type="ordinary" color="#000000" />
+            <neume-style type="accidental" color="#cf232b" />
+            <neume-style type="chronos" color="#cf232b" />
+            <neume-style type="martyria" color="#cf232b" />
+            <lyric-style font_family="Alegreya-Regular" font_size="14" color="#000000" space_before="26" />
+            <dropcap-style font_family="Alegreya-Regular" font_size="46" color="#000000" />
         </styles>
     </defaults>
+    <music>
+        <para>
+            Tempo Markings
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume type="chronos">chitria</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="chronos">chidiar</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="chronos">chihemi</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="chronos">chiargo</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="chronos">chigarg</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="chronos">chigorg</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="chronos">chidigo</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="chronos">chitrig</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <paragraph>
-        Tempo Markings
-    </paragraph>
-    <score>
-        <neumes>
-            chitria chidiar chihemi chiargo chigarg chigorg chidigo chitrig
-        </neumes>
-    </score>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Arga
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2DR</neume>
+                    <neume type="chronos">argoU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2DR</neume>
+                    <neume type="chronos">hemiU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2DR</neume>
+                    <neume type="chronos">diargU</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <paragraph>
-        Arga
-    </paragraph>
-    <score>
-        <neumes>
-            olig_ken2DR_argoU
-            olig_ken2DR_hemiU
-            olig_ken2DR_diargU
-        </neumes>
-    </score>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Gorga over ison
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                    <neume type="chronos">gorgU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                    <neume type="chronos">gorgdotU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                    <neume type="chronos">dotgorgU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                    <neume type="chronos">digoU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                    <neume type="chronos">digodotU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                    <neume type="chronos">dotdigoU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                    <neume type="chronos">trigU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                    <neume type="chronos">trigdotU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                    <neume type="chronos">dottrigU</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <paragraph>
-        Gorga over ison
-    </paragraph>
-    <score>
-        <neumes>
-            ison_gorgU
-            ison_gorgdotU
-            ison_dotgorgU
-            ison_digoU
-            ison_digodotU
-            ison_dotdigoU
-            ison_trigU
-            ison_trigdotU
-            ison_dottrigU
-        </neumes>
-    </score>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Gorga over oligon with kentemata
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2U</neume>
+                    <neume type="chronos">gorgU2</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2U</neume>
+                    <neume type="chronos">gorgdotU2</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2U</neume>
+                    <neume type="chronos">dotgorgU2</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2U</neume>
+                    <neume type="chronos">digoU2</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2U</neume>
+                    <neume type="chronos">digodotU2</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2U</neume>
+                    <neume type="chronos">dotdigoU2</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2U</neume>
+                    <neume type="chronos">trigU2</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2U</neume>
+                    <neume type="chronos">trigdotU2</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>ken2U</neume>
+                    <neume type="chronos">dottrigU2</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <paragraph>
-        Gorga over oligon with kentemata
-    </paragraph>
-    <score>
-        <neumes>
-            olig_ken2U_gorgU2
-            olig_ken2U_gorgdotU2
-            olig_ken2U_dotgorgU2
-            olig_ken2U_digoU2
-            olig_ken2U_digodotU2
-            olig_ken2U_dotdigoU2
-            olig_ken2U_trigU2
-            olig_ken2U_trigdotU2
-            olig_ken2U_dottrigU2
-        </neumes>
-    </score>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Gorga over oligon upper right
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">gorgU2R</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">gorgdotU2R</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">dotgorgU2R</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">digoU2R</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">digodotU2R</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">dotdigoU2R</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">trigU2R</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">trigdotU2R</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">dottrigU2R</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <paragraph>
-        Gorga over oligon upper right
-    </paragraph>
-    <score>
-        <neumes>
-            olig_aposUL_ken2UR_gorgU2R
-            olig_aposUL_ken2UR_gorgdotU2R
-            olig_aposUL_ken2UR_dotgorgU2R
-            olig_aposUL_ken2UR_digoU2R
-            olig_aposUL_ken2UR_digodotU2R
-            olig_aposUL_ken2UR_dotdigoU2R
-            olig_aposUL_ken2UR_trigU2R
-            olig_aposUL_ken2UR_trigdotU2R
-            olig_aposUL_ken2UR_dottrigU2R
-        </neumes>
-    </score>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Gorga over oligon upper left
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">gorgU2L</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">gorgdotU2L</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">dotgorgU2L</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">digoU2L</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">digodotU2L</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">dotdigoU2L</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">trigU2L</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">trigdotU2L</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>aposUL</neume>
+                    <neume>ken2UR</neume>
+                    <neume type="chronos">dottrigU2L</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <paragraph>
-        Gorga over oligon upper left
-    </paragraph>
-    <score>
-        <neumes>
-            olig_aposUL_ken2UR_gorgU2L
-            olig_aposUL_ken2UR_gorgdotU2L
-            olig_aposUL_ken2UR_dotgorgU2L
-            olig_aposUL_ken2UR_digoU2L
-            olig_aposUL_ken2UR_digodotU2L
-            olig_aposUL_ken2UR_dotdigoU2L
-            olig_aposUL_ken2UR_trigU2L
-            olig_aposUL_ken2UR_trigdotU2L
-            olig_aposUL_ken2UR_dottrigU2L
-        </neumes>
-    </score>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Gorga over apostrophos and hyporroe
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">gorgUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">gorgdotUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">dotgorgUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">digoUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">digodotUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">dotdigoUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">trigUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">trigdotUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">dottrigUR</neume>
+                </neume-group>
+            </syllable>
+        </score>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">gorgUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">gorgdotUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">dotgorgUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">digoUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">digodotUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">dotdigoUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">trigUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">trigdotUR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">dottrigUR</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <paragraph>
-        Gorga over apostrophos and hyporroe
-    </paragraph>
-    <score>
-        <neumes>
-            apos_gorgUR
-            apos_gorgdotUR
-            apos_dotgorgUR
-            apos_digoUR
-            apos_digodotUR
-            apos_dotdigoUR
-            apos_trigUR
-            apos_trigdotUR
-            apos_dottrigUR
-        </neumes>
-    </score>
-    <score>
-        <neumes>
-            hypo_gorgUR
-            hypo_gorgdotUR
-            hypo_dotgorgUR
-            hypo_digoUR
-            hypo_digodotUR
-            hypo_dotdigoUR
-            hypo_trigUR
-            hypo_trigdotUR
-            hypo_dottrigUR
-        </neumes>
-    </score>
+        <para>
+            Gorga under apostrophos and hyporroe
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">gorgDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">gorgdotDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">dotgorgDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">digoDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">digodotDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">dotdigoDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">trigDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">trigdotDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume type="chronos">dottrigDR</neume>
+                </neume-group>
+            </syllable>
+        </score>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">gorgDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">gorgdotDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">dotgorgDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">digoDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">digodotDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">dotdigoDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">trigDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">trigdotDR</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>hypo</neume>
+                    <neume type="chronos">dottrigDR</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <paragraph>
-        Gorga under apostrophos and hyporroe
-    </paragraph>
-    <score>
-        <neumes>
-            apos_gorgDR
-            apos_gorgdotDR
-            apos_dotgorgDR
-            apos_digoDR
-            apos_digodotDR
-            apos_dotdigoDR
-            apos_trigDR
-            apos_trigdotDR
-            apos_dottrigDR
-        </neumes>
-    </score>
-    <score>
-        <neumes>
-            hypo_gorgDR
-            hypo_gorgdotDR
-            hypo_dotgorgDR
-            hypo_digoDR
-            hypo_digodotDR
-            hypo_dotdigoDR
-            hypo_trigDR
-            hypo_trigdotDR
-            hypo_dottrigDR
-        </neumes>
-    </score>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Gorga under oligon
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume type="chronos">gorgD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume type="chronos">gorgdotD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume type="chronos">dotgorgD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume type="chronos">digoD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume type="chronos">digodotD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume type="chronos">dotdigoD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume type="chronos">trigD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume type="chronos">trigdotD</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume type="chronos">dottrigD</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <paragraph>
-        Gorga under oligon
-    </paragraph>
-    <score>
-        <neumes>
-            olig_gorgD
-            olig_gorgdotD
-            olig_dotgorgD
-            olig_digoD
-            olig_digodotD
-            olig_dotdigoD
-            olig_trigD
-            olig_trigdotD
-            olig_dottrigD
-        </neumes>
-    </score>
+        <linebreak />
 
-    <linebreak />
-
-    <paragraph>
-        Korona
-    </paragraph>
-    <score>
-        <neumes>
-            olig_koroU
-            apos_koroUR
-        </neumes>
-    </score>
-
+        <para>
+            Korona
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>olig</neume>
+                    <neume>koroU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume>apos</neume>
+                    <neume>koroUR</neume>
+                </neume-group>
+            </syllable>
+        </score>
+    </music>
 </bnml>
