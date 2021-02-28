@@ -1,221 +1,915 @@
 <bnml>
-    <identification>
-        <work-title />
-        <author />
-        <subject />
-    </identification>
     <defaults>
         <page-layout>
             <paper-size>letter</paper-size>
             <page-margins top_margin="50" bottom_margin="50" left_margin="60" right_margin="60" />
         </page-layout>
         <styles>
-            <neumes font_family="KA New Stathis Main" font_size="30" word_spacing="3" leading="60" />
-            <lyrics font_family="Alegreya-Regular" font_size="18" space_before="26" />
-            <dropcap font_family="Alegreya-Regular" font_size="46" />
+            <score-style font_family="KA New Stathis" font_size="30" align="justify" word_spacing="0" leading="60" />
+            <neume-style type="ordinary" color="#000000" />
+            <neume-style type="accidental" color="#cf232b" />
+            <neume-style type="chronos" color="#cf232b" />
+            <neume-style type="martyria" color="#cf232b" />
+            <lyric-style font_family="Alegreya-Regular" font_size="14" color="#000000" space_before="26" />
+            <dropcap-style font_family="Alegreya-Regular" font_size="46" color="#000000" />
         </styles>
     </defaults>
+    <music>
+        <para>
+            Martyriae List
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">malfa</neume>
+                    <neume type="martyria">mpaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mlamd</neume>
+                    <neume type="martyria">mbouU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mnana</neume>
+                    <neume type="martyria">mgaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mdeltapo</neume>
+                    <neume type="martyria">mdiU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">malfaapo</neume>
+                    <neume type="martyria">mkeU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mhypo</neume>
+                    <neume type="martyria">mzoU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mdelt</neume>
+                    <neume type="martyria">mneU</neume>
+                    <neume type="martyria">mprimU</neume>
+                </neume-group>
+            </syllable>
+        <!--/score>
+        <score-->
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mpa</neume>
+                    <neume type="martyria">malfaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbou</neume>
+                    <neume type="martyria">mlamdU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mga</neume>
+                    <neume type="martyria">mnanaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mdi</neume>
+                    <neume type="martyria">mdeltapoU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mke</neume>
+                    <neume type="martyria">malfaapoU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzo</neume>
+                    <neume type="martyria">mhypoU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mne</neume>
+                    <neume type="martyria">mprim</neume>
+                    <neume type="martyria">mdeltU</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <!-- Martyriae text -->
-    <paragraph>
-        Martyriae List
-    </paragraph>
-    <score>
-        <neumes>
-            malfa_mpaU mlamd_mbouU mnana_mgaU mdeltapo_mdiU malfaapo_mkeU mhypo_mzoU mdelt_mneU_mprimU
-        </neumes>
-        <neumes>
-            mpa_malfaU mbou_mlamdU mga_mnanaU mdi_mdeltapoU mke_malfaapoU mzo_mhypoU mne_mprim_mdeltU
-        </neumes>
-    </score>
-    <score>
-        <neumes>
-            mbeta_mpaU mbeta_mbouU mbeta_mgaU mbeta_mdiU mbeta_mkeU mbeta_mzoU mbeta_mneU_mprimU
-        </neumes>
-        <neumes>
-            mpa_mbetaU mbou_mbetaU mga_mbetaU mdi_mbetaU mke_mbetaU mzo_mbetaU mne_mprim_mbetaU
-        </neumes>
-    </score>
-    <score>
-        <neumes>
-            mbetaapo_mpaU mbetaapo_mbouU mbetaapo_mgaU mbetaapo_mdiU mbetaapo_mkeU mbetaapo_mzoU mbetaapo_mneU_mprimU
-        </neumes>
-        <neumes>
-            mpa_mbetaapoU mbou_mbetaapoU mga_mbetaapoU mdi_mbetaapoU mke_mbetaapoU mzo_mbetaapoU mne_mprim_mbetaapoU
-        </neumes>
-    </score>
-    <score>
-        <neumes>
-            mnena_mpaU mnena_mbouU mnena_mgaU mnena_mdiU mnena_mkeU mnena_mzoU mnena_mneU_mprimU
-        </neumes>
-        <neumes>
-            mpa_mnenaU mbou_mnenaU mga_mnenaU mdi_mnenaU mke_mnenaU mzo_mnenaU mne_mprim_mnenaU
-        </neumes>
-    </score>
-    <score>
-        <neumes>
-            mscnena_mpaU mscnena_mbouU mscnena_mgaU mscnena_mdiU mscnena_mkeU mscnena_mzoU mscnena_mneU_mprimU
-        </neumes>
-        <neumes>
-            mpa_mscnenaU mbou_mscnenaU mga_mscnenaU mdi_mscnenaU mke_mscnenaU mzo_mscnenaU mne_mprim_mscnenaU
-        </neumes>
-    </score>
-    <score>
-        <neumes>
-            mzygos_mpaU mzygos_mbouU mzygos_mgaU mzygos_mdiU mzygos_mkeU mzygos_mzoU mzygos_mneU_mprimU
-        </neumes>
-        <neumes>
-            mpa_mzygosU mbou_mzygosU mga_mzygosU mdi_mzygosU mke_mzygosU mzo_mzygosU mne_mprim_mzygosU
-        </neumes>
-    </score>
-    <score>
-        <neumes>
-            mkliton_mpaU mkliton_mbouU mkliton_mgaU mkliton_mdiU mkliton_mkeU mkliton_mzoU mkliton_mneU_mprimU
-        </neumes>
-        <neumes>
-            mpa_mklitonU mbou_mklitonU mga_mklitonU mdi_mklitonU mke_mklitonU mzo_mklitonU mne_mprim_mklitonU
-        </neumes>
-    </score>
-    <score>
-        <neumes>
-            mspathi_mpaU mspathi_mbouU mspathi_mgaU mspathi_mdiU mspathi_mkeU mspathi_mzoU mspathi_mneU_mprimU
-        </neumes>
-        <neumes>
-            mpa_mspathiU mbou_mspathiU mga_mspathiU mdi_mspathiU mke_mspathiU mzo_mspathiU mne_mprim_mspathiU
-        </neumes>
-    </score>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbeta</neume>
+                    <neume type="martyria">mpaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbeta</neume>
+                    <neume type="martyria">mbouU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbeta</neume>
+                    <neume type="martyria">mgaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbeta</neume>
+                    <neume type="martyria">mdiU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbeta</neume>
+                    <neume type="martyria">mkeU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbeta</neume>
+                    <neume type="martyria">mzoU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbeta</neume>
+                    <neume type="martyria">mneU</neume>
+                    <neume type="martyria">mprimU</neume>
+                </neume-group>
+            </syllable>
 
-    <linebreak />
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mpa</neume>
+                    <neume type="martyria">mbetaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbou</neume>
+                    <neume type="martyria">mbetaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mga</neume>
+                    <neume type="martyria">mbetaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mdi</neume>
+                    <neume type="martyria">mbetaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mke</neume>
+                    <neume type="martyria">mbetaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzo</neume>
+                    <neume type="martyria">mbetaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mne</neume>
+                    <neume type="martyria">mprim</neume>
+                    <neume type="martyria">mbetaU</neume>
+                </neume-group>            
+            </syllable>
+        </score>
 
-    <!-- Martyriae text -->
-    <paragraph>
-        Tempo Markings above Martyriae
-    </paragraph>
-    <score>
-        <neumes>
-            malfa_mpaU_chitriaU
-            malfa_mpaU_chidiarU
-            malfa_mpaU_chihemiU
-            malfa_mpaU_chiargoU
-            malfa_mpaU_chigargU
-            malfa_mpaU_chigorgU
-            malfa_mpaU_chitrigU
-        </neumes>
-    </score>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbetaapo</neume>
+                    <neume type="martyria">mpaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbetaapo</neume>
+                    <neume type="martyria">mbouU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbetaapo</neume>
+                    <neume type="martyria">mgaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbetaapo</neume>
+                    <neume type="martyria">mdiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbetaapo</neume>
+                    <neume type="martyria">mkeU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbetaapo</neume>
+                    <neume type="martyria">mzoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbetaapo</neume>
+                    <neume type="martyria">mneU</neume>
+                    <neume type="martyria">mprimU</neume>
+                </neume-group>            
+            </syllable>
 
-    <linebreak />
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mpa</neume>
+                    <neume type="martyria">mbetaapoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbou</neume>
+                    <neume type="martyria">mbetaapoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mga</neume>
+                    <neume type="martyria">mbetaapoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mdi</neume>
+                    <neume type="martyria">mbetaapoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mke</neume>
+                    <neume type="martyria">mbetaapoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzo</neume>
+                    <neume type="martyria">mbetaapoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mne</neume>
+                    <neume type="martyria">mprim</neume>
+                    <neume type="martyria">mbetaapoU</neume>
+                </neume-group>            
+            </syllable>
+        </score>
 
-    <!-- Mode Signatures -->
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mnena</neume>
+                    <neume type="martyria">mpaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mnena</neume>
+                    <neume type="martyria">mbouU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mnena</neume>
+                    <neume type="martyria">mgaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mnena</neume>
+                    <neume type="martyria">mdiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mnena</neume>
+                    <neume type="martyria">mkeU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mnena</neume>
+                    <neume type="martyria">mzoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mnena</neume>
+                    <neume type="martyria">mneU</neume>
+                    <neume type="martyria">mprimU</neume>
+                </neume-group>            
+            </syllable>
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">i</font>
-        Πα
-        <font font_family="KA New Stathis Fthora" font_size="30">œ</font>
-    </paragraph>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mpa</neume>
+                    <neume type="martyria">mnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbou</neume>
+                    <neume type="martyria">mnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mga</neume>
+                    <neume type="martyria">mnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mdi</neume>
+                    <neume type="martyria">mnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mke</neume>
+                    <neume type="martyria">mnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzo</neume>
+                    <neume type="martyria">mnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mne</neume>
+                    <neume type="martyria">mprim</neume>
+                    <neume type="martyria">mnenaU</neume>
+                </neume-group>            
+            </syllable>
+        </score>
 
-    <linebreak />
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mscnena</neume>
+                    <neume type="martyria">mpaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mscnena</neume>
+                    <neume type="martyria">mbouU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mscnena</neume>
+                    <neume type="martyria">mgaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mscnena</neume>
+                    <neume type="martyria">mdiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mscnena</neume>
+                    <neume type="martyria">mkeU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mscnena</neume>
+                    <neume type="martyria">mzoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mscnena</neume>
+                    <neume type="martyria">mneU</neume>
+                    <neume type="martyria">mprimU</neume>
+                </neume-group>            
+            </syllable>
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">o</font>
-        Βου
-        <font font_family="KA New Stathis Fthora" font_size="30">å</font>
-    </paragraph>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mpa</neume>
+                    <neume type="martyria">mscnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbou</neume>
+                    <neume type="martyria">mscnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mga</neume>
+                    <neume type="martyria">mscnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mdi</neume>
+                    <neume type="martyria">mscnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mke</neume>
+                    <neume type="martyria">mscnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzo</neume>
+                    <neume type="martyria">mscnenaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mne</neume>
+                    <neume type="martyria">mprim</neume>
+                    <neume type="martyria">mscnenaU</neume>
+                </neume-group>            
+            </syllable>
+        </score>
 
-    <linebreak />
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzygos</neume>
+                    <neume type="martyria">mpaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzygos</neume>
+                    <neume type="martyria">mbouU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzygos</neume>
+                    <neume type="martyria">mgaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzygos</neume>
+                    <neume type="martyria">mdiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzygos</neume>
+                    <neume type="martyria">mkeU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzygos</neume>
+                    <neume type="martyria">mzoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzygos</neume>
+                    <neume type="martyria">mneU</neume>
+                    <neume type="martyria">mprimU</neume>
+                </neume-group>            
+            </syllable>
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">p</font>
-        Γα
-        <font font_family="KA New Stathis Fthora" font_size="30">´</font>
-    </paragraph>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mpa</neume>
+                    <neume type="martyria">mzygosU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbou</neume>
+                    <neume type="martyria">mzygosU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mga</neume>
+                    <neume type="martyria">mzygosU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mdi</neume>
+                    <neume type="martyria">mzygosU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mke</neume>
+                    <neume type="martyria">mzygosU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzo</neume>
+                    <neume type="martyria">mzygosU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mne</neume>
+                    <neume type="martyria">mprim</neume>
+                    <neume type="martyria">mzygosU</neume>
+                </neume-group>            
+            </syllable>
+        </score>
 
-    <linebreak />
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mkliton</neume>
+                    <neume type="martyria">mpaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mkliton</neume>
+                    <neume type="martyria">mbouU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mkliton</neume>
+                    <neume type="martyria">mgaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mkliton</neume>
+                    <neume type="martyria">mdiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mkliton</neume>
+                    <neume type="martyria">mkeU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mkliton</neume>
+                    <neume type="martyria">mzoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mkliton</neume>
+                    <neume type="martyria">mneU</neume>
+                    <neume type="martyria">mprimU</neume>
+                </neume-group>            
+            </syllable>
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">π</font>
-        Γα
-        <font font_family="KA New Stathis Fthora" font_size="30">´</font>
-    </paragraph>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mpa</neume>
+                    <neume type="martyria">mklitonU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbou</neume>
+                    <neume type="martyria">mklitonU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mga</neume>
+                    <neume type="martyria">mklitonU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mdi</neume>
+                    <neume type="martyria">mklitonU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mke</neume>
+                    <neume type="martyria">mklitonU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzo</neume>
+                    <neume type="martyria">mklitonU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mne</neume>
+                    <neume type="martyria">mprim</neume>
+                    <neume type="martyria">mklitonU</neume>
+                </neume-group>            
+            </syllable>
+        </score>
 
-    <linebreak />
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mspathi</neume>
+                    <neume type="martyria">mpaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mspathi</neume>
+                    <neume type="martyria">mbouU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mspathi</neume>
+                    <neume type="martyria">mgaU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mspathi</neume>
+                    <neume type="martyria">mdiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mspathi</neume>
+                    <neume type="martyria">mkeU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mspathi</neume>
+                    <neume type="martyria">mzoU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mspathi</neume>
+                    <neume type="martyria">mneU</neume>
+                    <neume type="martyria">mprimU</neume>
+                </neume-group>            
+            </syllable>
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">[</font>
-        Δι
-        <font font_family="KA New Stathis Fthora" font_size="30">®</font>
-    </paragraph>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mpa</neume>
+                    <neume type="martyria">mspathiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mbou</neume>
+                    <neume type="martyria">mspathiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mga</neume>
+                    <neume type="martyria">mspathiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mdi</neume>
+                    <neume type="martyria">mspathiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mke</neume>
+                    <neume type="martyria">mspathiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mzo</neume>
+                    <neume type="martyria">mspathiU</neume>
+                </neume-group>            
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">mne</neume>
+                    <neume type="martyria">mprim</neume>
+                    <neume type="martyria">mspathiU</neume>
+                </neume-group>            
+            </syllable>
+        </score>
 
-    <linebreak />
+        <linebreak />
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">“</font>
-        Βου
-        <font font_family="KA New Stathis Fthora" font_size="30">∑</font>
-    </paragraph>
+        <para>
+            Tempo Markings above Martyriae
+        </para>
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">malfa</neume>
+                    <neume type="martyria">mpaU</neume>
+                    <neume type="martyria">chitriaU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">malfa</neume>
+                    <neume type="martyria">mpaU</neume>
+                    <neume type="martyria">chidiarU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">malfa</neume>
+                    <neume type="martyria">mpaU</neume>
+                    <neume type="martyria">chihemiU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">malfa</neume>
+                    <neume type="martyria">mpaU</neume>
+                    <neume type="martyria">chiargoU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">malfa</neume>
+                    <neume type="martyria">mpaU</neume>
+                    <neume type="martyria">chigargU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">malfa</neume>
+                    <neume type="martyria">mpaU</neume>
+                    <neume type="martyria">chigorgU</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <neume-group>
+                    <neume type="martyria">malfa</neume>
+                    <neume type="martyria">mpaU</neume>
+                    <neume type="martyria">chitrigU</neume>
+                </neume-group>
+            </syllable>
+        </score>
 
-    <linebreak />
+        <linebreak />
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">/I</font>
-        Κε
-        <font font_family="KA New Stathis Fthora" font_size="30">†</font>
-        <font font_family="KA New Stathis Main" font_size="20">4</font>
-        <font font_family="KA New Stathis Fthora" font_size="20">q</font>
-    </paragraph>
+        <para>Mode Signatures</para>
 
-    <linebreak />
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">i</font>
+            Πα
+            <font font_family="KA New Stathis Fthora" font_size="30">œ</font>
+        </para>
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">/O</font>
-        Δι
-        <font font_family="KA New Stathis Fthora" font_size="30">∂</font>
-    </paragraph>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">o</font>
+            Βου
+            <font font_family="KA New Stathis Fthora" font_size="30">å</font>
+        </para>
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">/O</font>
-        Βου
-        <font font_family="KA New Stathis Fthora" font_size="30">∂</font>
-        <font font_family="KA New Stathis Main" font_size="20">z</font>
-    </paragraph>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">p</font>
+            Γα
+            <font font_family="KA New Stathis Fthora" font_size="30">´</font>
+        </para>
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">P</font>
-        Ζω
-        <font font_family="KA New Stathis Main" font_size="20">z</font>
-        <font font_family="KA New Stathis Fthora" font_size="20">q</font>
-    </paragraph>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">π</font>
+            Γα
+            <font font_family="KA New Stathis Fthora" font_size="30">´</font>
+        </para>
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">P</font>
-        Γα
-        <font font_family="KA New Stathis Fthora" font_size="30">˚</font>
-    </paragraph>
+        <linebreak />
 
-    <linebreak />
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">[</font>
+            Δι
+            <font font_family="KA New Stathis Fthora" font_size="30">®</font>
+        </para>
 
-    <paragraph>
-        Ἦχος
-        <font font_family="KA New Stathis Martyria" font_size="30">/{</font>
-        Νη
-        <font font_family="KA New Stathis Fthora" font_size="30">¨</font>
-        <font font_family="KA New Stathis Main" font_size="20">3</font>
-        <font font_family="KA New Stathis Fthora" font_size="20">¨</font>
-    </paragraph>
+        <linebreak />
+
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">“</font>
+            Βου
+            <font font_family="KA New Stathis Fthora" font_size="30">∑</font>
+        </para>
+
+        <linebreak />
+
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">/I</font>
+            Κε
+            <font font_family="KA New Stathis Fthora" font_size="30">†</font>
+            <font font_family="KA New Stathis Main" font_size="20">4</font>
+            <font font_family="KA New Stathis Fthora" font_size="20">q</font>
+        </para>
+
+        <linebreak />
+
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">/O</font>
+            Δι
+            <font font_family="KA New Stathis Fthora" font_size="30">∂</font>
+        </para>
+
+        <linebreak />
+
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">/O</font>
+            Βου
+            <font font_family="KA New Stathis Fthora" font_size="30">∂</font>
+            <font font_family="KA New Stathis Main" font_size="20">z</font>
+        </para>
+
+        <linebreak />
+
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">P</font>
+            Ζω
+            <font font_family="KA New Stathis Main" font_size="20">z</font>
+            <font font_family="KA New Stathis Fthora" font_size="20">q</font>
+        </para>
+
+        <linebreak />
+
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">P</font>
+            Γα
+            <font font_family="KA New Stathis Fthora" font_size="30">˚</font>
+        </para>
+
+        <linebreak />
+
+        <para>
+            Ἦχος
+            <font font_family="KA New Stathis Martyria" font_size="30">/{</font>
+            Νη
+            <font font_family="KA New Stathis Fthora" font_size="30">¨</font>
+            <font font_family="KA New Stathis Main" font_size="20">3</font>
+            <font font_family="KA New Stathis Fthora" font_size="20">¨</font>
+        </para>
+    </music>
 </bnml>
