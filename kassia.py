@@ -105,7 +105,7 @@ class Kassia:
         if metadata is not None:
             for meta_tag in ['title', 'author', 'subject']:
                 meta_value = metadata.find(meta_tag)
-                if meta_value:
+                if meta_value is not None:
                     setattr(self.doc, meta_tag, meta_value.text)
 
         defaults = self.bnml.find('defaults')
