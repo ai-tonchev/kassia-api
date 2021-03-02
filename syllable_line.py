@@ -1,11 +1,11 @@
 import collections
-from syllable_type import SyllableType
-from typing import List, Tuple
+from typing import List
 
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import Flowable
 
+from coord import Coord
 from lyric import Lyric
 from syllable import Syllable
 
@@ -21,16 +21,17 @@ class SyllableLine(Flowable, collections.MutableSequence):
         self.syllableSpacing = syllable_spacing
 
     def wrap(self, *args):
-        self.set_size()  # This might not be needed
+        self.set_size()
         return self.width, self.height
 
     def draw(self, canvas: Canvas = None):
         """This class is overloaded from Flowable's draw function.
 
-        Note: If a troparion gets split, platypus will treat the syllableLine as a Flowable and call draw without
-        any parameters.
+        Note: If a score gets split, platypus will treat the syllableLine
+        as a Flowable and call this draw function without any parameters.
 
-        :param canvas: The canvas. This only gets passed to draw when called by Score directly.
+        param: canvas: The canvas to draw on. Canvas only gets received as an
+        argument when this draw function is called by Score directly.
         """
         if not canvas:
             canvas = self.canv
@@ -38,10 +39,44 @@ class SyllableLine(Flowable, collections.MutableSequence):
         for syl in self.list:
             syl.draw(canvas)
 
+        self.draw_dashes(canvas)
         self.draw_extenders(canvas)
 
+    def draw_dashes(self, canvas):
+        """Draw dashes connecting lyrics in a line of syllables.
+
+        Loop through syllables in list. Draw dash whenever connector is found.
+        Dashes after syllable come after lyric, while dashes on no lyric are
+        centered under syllable.
+
+        :param canvas: The canvas to draw extender on.
+        """
+        starting_lyric = None
+        for syl in self.list:
+            if syl.contains_connector_type('d'):
+                if starting_lyric is None:
+                    starting_lyric = syl.lyric
+
+                # Start of word
+                if syl.lyric.text is not None:
+                    starting_lyric = syl.lyric
+                    coord = self._get_initial_dash_position(syl)
+                # Middle of word
+                else:
+                    coord = syl.lyric_pos
+                    
+                if syl.takes_lyric:
+                    self._draw_dash(canvas,
+                                    coord,
+                                    starting_lyric.color,
+                                    starting_lyric.font_family,
+                                    starting_lyric.font_size)
+            # End of word
+            elif starting_lyric is not None:
+                starting_lyric = None
+    
     def draw_extenders(self, canvas):
-        """Draw extenders (dash, underscore, etc.) connecting two or more sets of lyrics in the line.
+        """Draw extenders connecting two or more sets of lyrics in a line.
 
         Loop through syllables in list. Begin extender if necessary.
         When encountering new lyric, end current extender and begin new one.
@@ -89,10 +124,20 @@ class SyllableLine(Flowable, collections.MutableSequence):
             self._draw_extender(canvas, x1, y1, x2, y2, starting_lyric)
 
     @staticmethod
+    def _get_initial_dash_position(syl: Syllable) -> Coord:
+        """Return dash position for the passed lyric.
+
+        param: syl: Current syllable.
+        returns: Dash position as Coordinate
+        """      
+        lyric_space_width = pdfmetrics.stringWidth(' ', syl.lyric.font_family, syl.lyric.font_size)
+        return Coord(syl.lyric_pos.x + syl.lyric.width + (lyric_space_width*2), syl.lyric_pos.y)
+    
+    @staticmethod
     def _get_extender_start_position(syl: Syllable) -> float:
         """Return extender starting position (x position), after lyric.
 
-        :param syl: Current syllable.
+        param: syl: Current syllable.
         """
         lyric_space_width = pdfmetrics.stringWidth(' ', syl.lyric.font_family, syl.lyric.font_size)
         return syl.lyric_pos.x + syl.lyric.width + lyric_space_width
@@ -101,30 +146,44 @@ class SyllableLine(Flowable, collections.MutableSequence):
     def _get_extender_end_position(syl: Syllable) -> float:
         """Return extender end position (x position), which is at end of neume (neume width).
 
-        :param syl: Current syllable.
+        param: syl: Current syllable.
         """
         return syl.neume_chunk_pos.x + syl.width
     
     @staticmethod
     def _get_special_extender_end_position(syl: Syllable) -> float:
         """Return extender end position when special lyric offset.
-        :param syl: Current syllable.
+        param: syl: Current syllable.
         """
         return syl.neume_chunk_pos.x + syl.lyric_offset
     
-    def _draw_extender(self, canvas: Canvas, x1: float, y1: float, x2: float, y2: float, starting_lyric: Lyric):
-        """Draw an extender (dash, underscore, etc.) connecting two or more sets of lyrics.
-        :param canvas: The canvas to draw extender to.
-        :param x1: Start of extender, x coordinate.
-        :param y1: Start of extender, y coordinate.
-        :param x2: End of extender, x coordinate.
-        :param y2: End of extender, y coordinate.
-        :param starting_syllable: Syllable which starts the extender.
+    @staticmethod
+    def _draw_extender(canvas: Canvas, x1: float, y1: float, x2: float, y2: float, starting_lyric: Lyric):
+        """Draw an underscore extender connecting two or more sets of lyrics.
+        param: canvas: The canvas to draw extender to.
+        param: x1: Start of extender, x coordinate.
+        param: y1: Start of extender, y coordinate.
+        param: x2: End of extender, x coordinate.
+        param: y2: End of extender, y coordinate.
+        param: starting_syllable: Syllable which starts the extender.
         """
         if x1 is not None and x2 is not None:
             canvas.setStrokeColor(starting_lyric.color)
             canvas.setFont(starting_lyric.font_family, starting_lyric.font_size)
             canvas.line(x1, y1, x2, y2)
+    
+    @staticmethod
+    def _draw_dash(canvas: Canvas, dash_coord: Coord, color: str, font_family: str, font_size: int):
+        """Draw a set of dashes connecting two or more sets of lyrics.
+        param: canvas: The canvas to draw extender to.
+        param: dash_coord: Position to draw dash at.
+        param: color: Color of dash to draw.
+        param: font_family: Font family of dash to draw.
+        param: font_size: Font size of dash to draw.
+        """
+        canvas.setFillColor(color)
+        canvas.setFont(font_family, font_size)
+        canvas.drawCentredString(dash_coord.x, dash_coord.y, '-')
 
     def set_size(self):
         if self.list:

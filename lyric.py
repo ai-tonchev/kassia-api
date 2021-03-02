@@ -8,7 +8,7 @@ class Lyric:
         self.text: str = text
         self.font_family: str = font_family
         self.font_size: int = font_size
-        self.color = color
+        self.color: str = color
         self.top_margin: float = top_margin
         self.connector: Connector = connector
         self.recalc_width()

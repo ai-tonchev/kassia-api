@@ -117,7 +117,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>un-</lyric>
+                <lyric con="d">un</lyric>
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="linking">antiD</neume>
@@ -125,7 +125,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d"/>
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
@@ -172,7 +172,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>heark-</lyric>
+                <lyric con="d">heark</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>kentU</neume>
@@ -188,7 +188,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>un-</lyric>
+                <lyric con="d">un</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>aposUL</neume>
@@ -197,7 +197,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
@@ -236,7 +236,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>heark-</lyric>
+                <lyric con="d">heark</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>klasU</neume>
@@ -251,7 +251,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>un-</lyric>
+                <lyric con="d">un</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>isonU</neume>
@@ -371,7 +371,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>un-</lyric>
+                <lyric con="d">un</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>aposU</neume>
@@ -411,7 +411,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>heark-</lyric>
+                <lyric con="d">heark</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>isonUL</neume>
@@ -432,7 +432,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>un-</lyric>
+                <lyric con="d">un</lyric>
                 <neume-group>
                     <neume>apos</neume>
                     <neume>klasU</neume>
@@ -481,7 +481,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>at-</lyric>
+                <lyric con="d">at</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>hypsUR</neume>
@@ -555,7 +555,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>sup-</lyric>
+                <lyric con="d">sup</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>ken2U</neume>
@@ -563,40 +563,40 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>pli-</lyric>
+                <lyric con="d">pli</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>ken2U</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>ca-</lyric>
+                <lyric con="d">ca</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>aposU</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>apos</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>isonUL</neume>
@@ -605,14 +605,14 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>bare</neume>
                     <neume type="primary">ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>apos</neume>
                     <neume type="chronos">gorgUR</neume>
@@ -666,7 +666,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>un-</lyric>
+                <lyric con="d">un</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>aposU</neume>
@@ -706,13 +706,13 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>Heark-</lyric>
+                <lyric con="d">Heark</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>ken2</neume>
                 </neume-group>
@@ -725,7 +725,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>un-</lyric>
+                <lyric con="d">un</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>aposU</neume>
@@ -898,20 +898,20 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>in-</lyric>
+                <lyric con="d">in</lyric>
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>ken2DR</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>olig</neume>
                     <neume>antiD</neume>
@@ -925,7 +925,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>be-</lyric>
+                <lyric con="d">be</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>aposUL</neume>
@@ -1005,7 +1005,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>lift-</lyric>
+                <lyric con="d">lift</lyric>
                 <neume-group>
                     <neume>olig</neume>
                 </neume-group>
@@ -1082,7 +1082,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>eve-</lyric>
+                <lyric con="d">eve</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
@@ -1094,7 +1094,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>sac-</lyric>
+                <lyric con="d">sac</lyric>
                 <neume-group>
                     <neume>olig</neume>
                     <neume>klasU</neume>
@@ -1102,7 +1102,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>ri-</lyric>
+                <lyric con="d">ri</lyric>
                 <neume-group>
                     <neume>apos</neume>
                     <neume>klasU</neume>
@@ -1122,13 +1122,13 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>heark-</lyric>
+                <lyric con="d">heark</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>-</lyric>
+                <lyric con="d" />
                 <neume-group>
                     <neume>ken2</neume>
                 </neume-group>
@@ -1141,7 +1141,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>un-</lyric>
+                <lyric con="d">un</lyric>
                 <neume-group>
                     <neume>peta</neume>
                     <neume>aposU</neume>
@@ -1342,7 +1342,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>pris-</lyric>
+                <lyric con="d">pris</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>
@@ -1378,7 +1378,7 @@
                 </neume-group>
             </syllable>
             <syllable>
-                <lyric>con-</lyric>
+                <lyric con="d">con</lyric>
                 <neume-group>
                     <neume>ison</neume>
                 </neume-group>

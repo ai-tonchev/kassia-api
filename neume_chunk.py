@@ -1,11 +1,11 @@
-import collections
+from collections import MutableSequence
 
 from reportlab.pdfbase import pdfmetrics
 
 from neume import Neume
 
 
-class NeumeChunk(collections.MutableSequence):
+class NeumeChunk(MutableSequence):
     """A collection of Neumes, but with a calculated width and height.
     A chunk contains one base neume, and other neumes that are anchored to the base neume.
     """
@@ -14,7 +14,7 @@ class NeumeChunk(collections.MutableSequence):
         self.height: float = 0
         self.base_neume: Neume or None = None
         self.takes_lyric: bool = False  # whether some neume in the chunk could take a lyric
-        self.list = []
+        self.list: MutableSequence[Neume] = []
         self.extend(list(args))
 
     def __len__(self):
@@ -38,6 +38,7 @@ class NeumeChunk(collections.MutableSequence):
         self.list.insert(i, v)
 
         self.assign_base_neume()
+        self.set_takes_lyric()
 
     def __str__(self):
         return str(self.list)
@@ -66,6 +67,13 @@ class NeumeChunk(collections.MutableSequence):
                 self.base_neume = self.list[0]
         except IndexError:
             return
+
+    def set_takes_lyric(self):
+        for neume in self.list:
+            if neume.takes_lyric:
+                self.takes_lyric = True
+                return
+        self.takes_lyric = False
 
     @property
     def lyric_offset(self) -> float:

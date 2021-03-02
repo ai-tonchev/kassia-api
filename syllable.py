@@ -86,3 +86,9 @@ class Syllable(Flowable):
         """Returns the lyric offset of the base neume of a chunk.
         """
         return self.neume_chunk.lyric_offset
+
+    @property
+    def takes_lyric(self) -> bool:
+        """Returns whether syllable can take a lyric.
+        """
+        return self.neume_chunk.takes_lyric
