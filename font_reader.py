@@ -70,9 +70,8 @@ def _get_system_font_paths() -> List[str]:
         return ['/Library/Fonts', os.path.expanduser('~/Library/Fonts')]
     elif platform.startswith('win') or platform.startswith('cygwin'):
         return [os.path.join(os.environ['WINDIR'], 'Fonts')]
-    elif platform.startswith("linux"):
-        logging.warning("Logic for checking system fonts in Linux is not implemented.")
-        return None
+    elif platform.startswith('linux'):
+        return ['/usr/share/fonts', os.path.expanduser('~/.fonts'), os.path.expanduser('~/.local/share/fonts')]
 
 
 def _get_neume_dict(font_folder_path: str) -> Dict:
