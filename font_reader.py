@@ -1,13 +1,14 @@
 #!/usr/bin/python
+import os
+import logging
 from pathlib import Path
+from sys import platform
+from typing import Dict, List
 
 from reportlab.lib import fontfinder
 from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont, TTFError
-import os
-from sys import platform
-import logging
 
 from ruamel.yaml import safe_load, YAMLError
 from schema import Schema, And, Optional, SchemaError
@@ -37,8 +38,11 @@ font_glyphnames_schema = Schema({
         })
 
 
-def register_fonts(check_sys_fonts=False):
-    """Registers fonts by checking the local /font directory, and system installed fonts.
+def register_fonts(check_sys_fonts=False) -> Dict:
+    """Registers fonts by checking the local font directory and system installed fonts.
+    
+    :param check_sys_fonts: Whether function should search system folders for fonts.
+    :returns: Dict of font configs for all discovered fonts.
     """
     dirs = []
 
@@ -57,17 +61,23 @@ def register_fonts(check_sys_fonts=False):
     return neume_font_configs
 
 
-def _get_system_font_paths():
-    if platform.startswith("darwin"):
-        return ['/Library/Fonts', os.path.expanduser("~/Library/Fonts")]
-    elif platform.startswith("win") or platform.startswith("cygwin"):
+def _get_system_font_paths() -> List[str]:
+    """Return list of system font paths, depending on detected OS.
+
+    :return: List of system font paths.
+    """
+    if platform.startswith('darwin'):
+        return ['/Library/Fonts', os.path.expanduser('~/Library/Fonts')]
+    elif platform.startswith('win') or platform.startswith('cygwin'):
         return [os.path.join(os.environ['WINDIR'], 'Fonts')]
     elif platform.startswith("linux"):
         logging.warning("Logic for checking system fonts in Linux is not implemented.")
         return None
 
 
-def _get_neume_dict(font_folder_path):
+def _get_neume_dict(font_folder_path: str) -> Dict:
+    """Search folder path for font configs, load them, and return in Dict.
+    """
     font_config_dict = {}
     for glyphname_path in Path(font_folder_path).rglob('glyphnames.yaml'):
         folder = glyphname_path.parent.name
@@ -78,7 +88,9 @@ def _get_neume_dict(font_folder_path):
     return font_config_dict
 
 
-def _read_font_config(filepath: str, validator: Schema):
+def _read_font_config(filepath: str, validator: Schema) -> Dict:
+    """Read, load, and validate a font configuration, and return it as a Dict.
+    """
     font_config = None
     with open(filepath, 'r') as fp:
         try:
@@ -92,8 +104,15 @@ def _read_font_config(filepath: str, validator: Schema):
     return font_config
 
 
-def register_font_path(font_path):
-    # Caching seems to cause problems. Disable for now
+def register_font_path(font_path: str):
+    """Search font_path for TTF's and register them.
+    
+    Registers discovered fonts as part of family if multiple weights are found.
+    ReportLab usually keeps a cache after searching a directory.
+    I have this cache disabled because it doesn't seem to work correcty.
+
+    :param font_path: Path to search for fonts.
+    """
     ff = fontfinder.FontFinder(useCache=False)
     ff.addDirectory(font_path, recur=True)
 
@@ -128,5 +147,9 @@ def register_font_path(font_path):
                     continue
 
 
-def is_registered_font(font_name):
+def is_registered_font(font_name: str) -> bool:
+    """Return whether passed font is registered.
+
+    :param font_name: Name of font to check within registered fonts.
+    """
     return font_name in pdfmetrics.getRegisteredFontNames()

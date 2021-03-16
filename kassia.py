@@ -30,16 +30,15 @@ class Kassia:
         self.doc = None  # SimpleDocTemplate()
         self.story = []
         self.styleSheet = getSampleStyleSheet()
-        self.header_even_paragraph = None
-        self.header_even_pagenum_style = None
-        self.header_odd_paragraph = None
-        self.header_odd_pagenum_style = None
-        self.footer_paragraph = None
-        self.footer_pagenum_style = None
+        self.header_even_paragraph: Paragraph = None
+        self.header_even_pagenum_style: ParagraphStyle = None
+        self.header_odd_paragraph: Paragraph = None
+        self.header_odd_pagenum_style: ParagraphStyle = None
+        self.footer_paragraph: Paragraph = None
+        self.footer_pagenum_style: ParagraphStyle = None
         self.scoreStyleSheet = StyleSheet1()
         self.init_styles()
-        self.input_filename = input_filename
-        self.neume_info_dict = {}
+        self.input_filename: str = input_filename
         
         try:
             open(input_filename, "r")
@@ -47,7 +46,7 @@ class Kassia:
             logging.error("XML file not readable.")
             return
 
-        self.neume_info_dict = font_reader.register_fonts()
+        self.neume_info_dict: Dict = font_reader.register_fonts()
         self.parse_file()
         self.build_document(output_file)
         self.create_pdf()
@@ -440,9 +439,9 @@ class Kassia:
         Checks font configuration for neumes that are conditional, and applies rules if
         the conditions specified in the font configuration are met.
 
-        param: neume_group: List of NeumeBnml (neume name and neume category).
-        param: font_lookup: Font information imported from yaml file.
-        returns: List of NeumeBnml.
+        :param neume_group: List of NeumeBnml (neume name and neume category).
+        :param font_lookup: Font information imported from yaml file.
+        :returns: List of NeumeBnml.
         """
         if len(neume_group) == 1 or neume_group[0].category == NeumeType.martyria:
             return neume_group
@@ -474,10 +473,10 @@ class Kassia:
     def _replace_conditional_neumes(self, neume_group: List[NeumeBnml], find_str, repl_str):
         """Check for conditional neumes and replace if necessary.
 
-        param: neume_group: List of NeumeBnml (neume name and neume category).
-        param: find_str: String to be replaced in neume_group.
-        param: repl_str: String to replace find_str in neume_group.
-        returns: Underscore separated string.
+        :param neume_group: List of NeumeBnml (neume name and neume category).
+        :param find_str: String to be replaced in neume_group.
+        :param repl_str: String to replace find_str in neume_group.
+        :returns: Underscore separated string.
         """
         neume_name_str_list = self.convert_neumegroup_to_str(neume_group)
         return neume_name_str_list.replace(find_str, repl_str)
@@ -486,8 +485,8 @@ class Kassia:
     def convert_neumegroup_to_str(neume_group: Iterator[NeumeBnml]) -> str:
         """Converts a list of NeumeBnml to a string of underscore separated neume names.
 
-        param: neume_group: List of NeumeBnml (neume name and neume category).
-        returns: Underscore separated string.
+        :param neume_group: List of NeumeBnml (neume name and neume category).
+        :returns: Underscore separated string.
         """
         return '_'.join(neume.name for neume in neume_group)
 
@@ -495,9 +494,9 @@ class Kassia:
     def convert_strlist_to_neumegroup(neume_str_list: List[str], font_class_config: Dict) -> Iterator[NeumeBnml]:
         """Converts a string of underscore separated neume names to a list of NeumeBnml.
 
-        param: neumes: List of neume names.
-        param: font_class_config: Processed classes.yaml configuration.
-        returns: List of neumes in NeumeBnml format.
+        :param neumes: List of neume names.
+        :param font_class_config: Processed classes.yaml configuration.
+        :returns: List of neumes in NeumeBnml format.
         """
         neume_group = []
         for index, neume_str in enumerate(neume_str_list):
@@ -521,10 +520,10 @@ class Kassia:
         Works by chopping off the last neume in the chunk and checking
         the remainder to see if it matches any ligatures in the neume config list.
 
-        param: neume_chunk_name: Name of neume chunk (neume names joined by underscores).
-        param: neume_config: Font configuration information from yaml.
-        param: optional_ligatures_enabled: Whether optional ligatures should be used in classes.yaml.
-        returns: List of neume names, with neume ligatures used.
+        :param neume_chunk_name: Name of neume chunk (neume names joined by underscores).
+        :param neume_config: Font configuration information from yaml.
+        :param optional_ligatures_enabled: Whether optional ligatures should be used in classes.yaml.
+        :returns: List of neume names, with neume ligatures used.
         todo: Add additional check for ligatures from first neume towards back.
         """
         # Substitute optional ligatures
@@ -799,7 +798,7 @@ class Kassia:
         :param line_width: Width of a line (usually page width minus margins).
         :param line_spacing: Vertical space between each line. Needed to create SyllableLine.
         :param syl_spacing: Minimum space between each syllable, from bnml.
-        :return syl_line_list: A list of lines of Glyphs.
+        :return syl_line_list: A list of lines of Syllables.
         """
         cr = starting_pos
         syl_line_list: List[SyllableLine] = []

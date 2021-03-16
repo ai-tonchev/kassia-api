@@ -30,7 +30,7 @@ class SyllableLine(Flowable, collections.MutableSequence):
         Note: If a score gets split, platypus will treat the syllableLine
         as a Flowable and call this draw function without any parameters.
 
-        param: canvas: The canvas to draw on. Canvas only gets received as an
+        :param  canvas: The canvas to draw on. Canvas only gets received as an
         argument when this draw function is called by Score directly.
         """
         if not canvas:
@@ -127,8 +127,8 @@ class SyllableLine(Flowable, collections.MutableSequence):
     def _get_initial_dash_position(syl: Syllable) -> Coord:
         """Return dash position for the passed lyric.
 
-        param: syl: Current syllable.
-        returns: Dash position as Coordinate
+        :param syl: Current syllable.
+        :returns: Dash position as Coordinate
         """      
         lyric_space_width = pdfmetrics.stringWidth(' ', syl.lyric.font_family, syl.lyric.font_size)
         return Coord(syl.lyric_pos.x + syl.lyric.width + (lyric_space_width*2), syl.lyric_pos.y)
@@ -137,7 +137,7 @@ class SyllableLine(Flowable, collections.MutableSequence):
     def _get_extender_start_position(syl: Syllable) -> float:
         """Return extender starting position (x position), after lyric.
 
-        param: syl: Current syllable.
+        :param syl: Current syllable.
         """
         lyric_space_width = pdfmetrics.stringWidth(' ', syl.lyric.font_family, syl.lyric.font_size)
         return syl.lyric_pos.x + syl.lyric.width + lyric_space_width
@@ -146,26 +146,26 @@ class SyllableLine(Flowable, collections.MutableSequence):
     def _get_extender_end_position(syl: Syllable) -> float:
         """Return extender end position (x position), which is at end of neume (neume width).
 
-        param: syl: Current syllable.
+        :param syl: Current syllable.
         """
         return syl.neume_chunk_pos.x + syl.width
     
     @staticmethod
     def _get_special_extender_end_position(syl: Syllable) -> float:
         """Return extender end position when special lyric offset.
-        param: syl: Current syllable.
+        :param syl: Current syllable.
         """
         return syl.neume_chunk_pos.x + syl.lyric_offset
     
     @staticmethod
     def _draw_extender(canvas: Canvas, x1: float, y1: float, x2: float, y2: float, starting_lyric: Lyric):
         """Draw an underscore extender connecting two or more sets of lyrics.
-        param: canvas: The canvas to draw extender to.
-        param: x1: Start of extender, x coordinate.
-        param: y1: Start of extender, y coordinate.
-        param: x2: End of extender, x coordinate.
-        param: y2: End of extender, y coordinate.
-        param: starting_syllable: Syllable which starts the extender.
+        :param canvas: The canvas to draw extender to.
+        :param x1: Start of extender, x coordinate.
+        :param y1: Start of extender, y coordinate.
+        :param x2: End of extender, x coordinate.
+        :param y2: End of extender, y coordinate.
+        :param starting_syllable: Syllable which starts the extender.
         """
         if x1 is not None and x2 is not None:
             canvas.setStrokeColor(starting_lyric.color)
@@ -175,11 +175,11 @@ class SyllableLine(Flowable, collections.MutableSequence):
     @staticmethod
     def _draw_dash(canvas: Canvas, dash_coord: Coord, color: str, font_family: str, font_size: int):
         """Draw a set of dashes connecting two or more sets of lyrics.
-        param: canvas: The canvas to draw extender to.
-        param: dash_coord: Position to draw dash at.
-        param: color: Color of dash to draw.
-        param: font_family: Font family of dash to draw.
-        param: font_size: Font size of dash to draw.
+        :param canvas: The canvas to draw extender to.
+        :param dash_coord: Position to draw dash at.
+        :param color: Color of dash to draw.
+        :param font_family: Font family of dash to draw.
+        :param font_size: Font size of dash to draw.
         """
         canvas.setFillColor(color)
         canvas.setFont(font_family, font_size)
