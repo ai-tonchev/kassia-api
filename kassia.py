@@ -961,7 +961,7 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(levelname)s - %(message)s')
     if len(sys.argv) == 1:
         logging.error("Input XML file required.")
         sys.exit(1)
