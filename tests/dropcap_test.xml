@@ -1,0 +1,124 @@
+<bnml>
+    <defaults>
+        <page-layout>
+            <paper-size>letter</paper-size>
+            <page-margins top_margin="50" bottom_margin="50" left_margin="60" right_margin="60" />
+        </page-layout>
+        <styles>
+            <score-style font_family="KA New Stathis" font_size="30" align="left" word_spacing="0" leading="60" />
+            <neume-style type="ordinary" color="#000000" />
+            <neume-style type="accidental" color="#cf232b" />
+            <neume-style type="chronos" color="#cf232b" />
+            <neume-style type="martyria" color="#cf232b" />
+            <lyric-style font_family="Alegreya-Regular" font_size="14" color="#000000" space_before="26" />
+            <dropcap-style font_family="Alegreya-Regular" font_size="46" color="#000000" />
+        </styles>
+    </defaults>
+    <music>
+        <para>
+            Dropcap with no indent
+        </para>
+        <score>
+            <dropcap right_indent="0">L</dropcap>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <linebreak />
+
+        <para>
+            Dropcap with large indent
+        </para>
+        <score>
+            <dropcap right_indent="25">L</dropcap>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <linebreak />
+        
+        <para>
+            Dropcap left-aligned, single line
+        </para>
+        <score>
+            <dropcap>L</dropcap>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <linebreak />
+        
+        <para>
+            Dropcap justified, single line
+        </para>
+        <score>
+            <dropcap>L</dropcap>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+            <syllable>
+                <lyric>la</lyric>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+        </score>
+    </music>
+</bnml>
