@@ -10,7 +10,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.platypus import PageBreak, Paragraph, Spacer
 from xml.etree.ElementTree import Element, ParseError, parse
 
-from font_reader import register_fonts
+from font_reader import find_and_register_fonts
 from complex_doc_template import ComplexDocTemplate
 from coord import Coord
 from drop_cap import Dropcap
@@ -46,7 +46,7 @@ class Kassia:
             logging.error("XML file not readable.")
             return
 
-        self.neume_info_dict: Dict = register_fonts()
+        self.neume_info_dict: Dict = find_and_register_fonts()
         self.parse_file()
         self.build_document(output_file)
         self.create_pdf()

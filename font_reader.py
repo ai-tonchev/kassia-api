@@ -2,9 +2,9 @@
 import os
 import logging
 from pathlib import Path
-from sys import platform
-from typing import Dict, List
+from typing import Dict
 
+from reportlab import rl_settings
 from reportlab.lib import fontfinder
 from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
@@ -38,42 +38,6 @@ font_glyphnames_schema = Schema({
         })
 
 
-def register_fonts(check_sys_fonts=False) -> Dict:
-    """Registers fonts by checking the local font directory and system installed fonts.
-    
-    :param check_sys_fonts: Whether function should search system folders for fonts.
-    :returns: Dict of font configs for all discovered fonts.
-    """
-    dirs = []
-
-    # Always check local kassia font folder first so that included fonts will have precedence over system fonts
-    internal_font_path = os.path.join(str(Path.cwd()), 'fonts')
-
-    neume_font_configs = _get_neume_dict(internal_font_path)
-    dirs.append(internal_font_path)
-
-    if check_sys_fonts:
-        dirs.extend(_get_system_font_paths())
-
-    for path in dirs:
-        register_font_path(path)
-
-    return neume_font_configs
-
-
-def _get_system_font_paths() -> List[str]:
-    """Return list of system font paths, depending on detected OS.
-
-    :return: List of system font paths.
-    """
-    if platform.startswith('darwin'):
-        return ['/Library/Fonts', os.path.expanduser('~/Library/Fonts')]
-    elif platform.startswith('win') or platform.startswith('cygwin'):
-        return [os.path.join(os.environ['WINDIR'], 'Fonts')]
-    elif platform.startswith('linux'):
-        return ['/usr/share/fonts', os.path.expanduser('~/.fonts'), os.path.expanduser('~/.local/share/fonts')]
-
-
 def _get_neume_dict(font_folder_path: str) -> Dict:
     """Search folder path for font configs, load them, and return in Dict.
     """
@@ -103,7 +67,29 @@ def _read_font_config(filepath: str, validator: Schema) -> Dict:
     return font_config
 
 
-def register_font_path(font_path: str):
+def find_and_register_fonts(check_sys_fonts=False) -> Dict:
+    ff = fontfinder.FontFinder( useCache=False)
+
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    local_font_dir = os.path.join(str(base_dir), 'kassia/fonts')
+    ff.addDirectory(local_font_dir, recur=True)
+
+    if check_sys_fonts:
+        system_font_dirs = rl_settings.TTFSearchPath
+        ff.addDirectories(system_font_dirs)
+
+    try:
+        ff.search()
+    except (KeyError, Exception) as fferror:
+        logging.warning("Problem parsing font: {}".format(fferror))
+
+    _register_fonts(ff)
+
+    neume_font_configs = _get_neume_dict(local_font_dir)
+    return neume_font_configs
+
+
+def _register_fonts(font_finder: fontfinder.FontFinder):
     """Search font_path for TTF's and register them.
     
     Registers discovered fonts as part of family if multiple weights are found.
@@ -112,16 +98,8 @@ def register_font_path(font_path: str):
 
     :param font_path: Path to search for fonts.
     """
-    ff = fontfinder.FontFinder(useCache=False)
-    ff.addDirectory(font_path, recur=True)
-
-    try:
-        ff.search()
-    except (KeyError, Exception) as fferror:
-        logging.warning("Problem parsing font: {}".format(fferror))
-
-    for family_name in ff.getFamilyNames():
-        fonts_in_family = ff.getFontsInFamily(family_name)
+    for family_name in font_finder.getFamilyNames():
+        fonts_in_family = font_finder.getFontsInFamily(family_name)
         for font in fonts_in_family:
             if len(fonts_in_family) == 1:
                 try:
