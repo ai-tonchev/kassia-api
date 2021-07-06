@@ -40,19 +40,25 @@ font_glyphnames_schema = Schema({
 
 def _get_neume_dict(font_folder_path: str) -> Dict:
     """Search folder path for font configs, load them, and return in Dict.
+
+    :param font_folder_path: Path to font.
     """
     font_config_dict = {}
     for glyphname_path in Path(font_folder_path).rglob('glyphnames.yaml'):
         folder = glyphname_path.parent.name
         classes_path = Path.joinpath(glyphname_path.parent, 'classes.yaml')
-        font_config = {'glyphnames': _read_font_config(str(glyphname_path), font_glyphnames_schema),
-                       'classes': _read_font_config(str(classes_path), font_classes_schema)}
+        font_config = {'glyphnames': _load_font_config(str(glyphname_path), font_glyphnames_schema),
+                       'classes': _load_font_config(str(classes_path), font_classes_schema)}
         font_config_dict[folder] = font_config
     return font_config_dict
 
 
-def _read_font_config(filepath: str, validator: Schema) -> Dict:
+def _load_font_config(filepath: str, validator: Schema) -> Dict:
     """Read, load, and validate a font configuration, and return it as a Dict.
+
+    :param filepath: Path of font config file.
+    :param validator: Schema to validate against.
+    :return: Font configuration as a dictionary.
     """
     font_config = None
     with open(filepath, 'r') as fp:
@@ -68,6 +74,14 @@ def _read_font_config(filepath: str, validator: Schema) -> Dict:
 
 
 def find_and_register_fonts(check_sys_fonts=False) -> Dict:
+    """Search for fonts and register them.
+
+    If check_sys_fonts is false, function will only use fonts in local
+    /fonts folder.
+
+    :param check_sys_fonts: Whether to search system for fonts.
+    :return: Font configuration as a dictionary.
+    """
     ff = fontfinder.FontFinder( useCache=False)
 
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -94,9 +108,11 @@ def _register_fonts(font_finder: fontfinder.FontFinder):
     
     Registers discovered fonts as part of family if multiple weights are found.
     ReportLab usually keeps a cache after searching a directory.
-    I have this cache disabled because it doesn't seem to work correcty.
+    I have this cache disabled because it doesn't seem to work correctly.
+    If only one font in family, use family name as font name, otherwise
+    use familyname-fontface.
 
-    :param font_path: Path to search for fonts.
+    :param font_finder: Path to search for fonts.
     """
     for family_name in font_finder.getFamilyNames():
         fonts_in_family = font_finder.getFontsInFamily(family_name)
@@ -110,7 +126,6 @@ def _register_fonts(font_finder: fontfinder.FontFinder):
                     logging.warning("Could not register font {}, {}".format(family_name, e))
                     continue
             elif len(fonts_in_family) > 1:
-                '''If font family has multiple weights/styles'''
                 font_name = family_name + "-".encode() + font.styleName
                 font_name = font_name.decode("utf-8")
                 try:
