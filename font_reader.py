@@ -10,7 +10,7 @@ from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont, TTFError
 
-from ruamel.yaml import safe_load, YAMLError
+from ruamel.yaml import YAML, YAMLError
 from schema import Schema, And, Optional, SchemaError
 
 font_classes_schema = Schema({
@@ -63,7 +63,8 @@ def _load_font_config(filepath: str, validator: Schema) -> Dict:
     font_config = None
     with open(filepath, 'r') as fp:
         try:
-            font_config = safe_load(fp)
+            yaml = YAML(typ='safe', pure=True)
+            font_config = yaml.load(fp)
             validator.validate(font_config)
         except (IOError, YAMLError, SchemaError) as exc:
             logging.error("Problem reading {} font configuration. {}".format(filepath, exc))
