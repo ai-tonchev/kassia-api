@@ -1,4 +1,4 @@
-import collections
+from collections.abc import MutableSequence
 from typing import List
 
 from reportlab.pdfbase import pdfmetrics
@@ -10,7 +10,7 @@ from lyric import Lyric
 from syllable import Syllable
 
 
-class SyllableLine(Flowable, collections.MutableSequence):
+class SyllableLine(Flowable, MutableSequence):
     """This class is a collection of Syllables.
     """
     def __init__(self, leading=0, syllable_spacing=0, *args):

@@ -1,4 +1,4 @@
-from collections import MutableSequence
+from collections.abc import MutableSequence
 
 from reportlab.pdfbase import pdfmetrics
 
