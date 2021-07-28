@@ -11,8 +11,10 @@ schema = ">=0.7.2"
 [dev-packages]
 pylint = "*"
 pytest = "*"
-flake8 = "*"
 diff-pdf-visually = ">=1.6.2"
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+test = pytest
