@@ -31,7 +31,7 @@ jobs:
     - name: Install test dependencies # needed for tests using diff-pdf-visually
       run: |
         sudo apt install imagemagick
-        sudo apt install poppler
+        sudo apt install poppler-utils
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
