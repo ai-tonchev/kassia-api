@@ -11,31 +11,57 @@ on:
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest] #, windows-latest]
         python-version: [3.7]
-
+    defaults:
+      run:
+        shell: bash
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      uses: VaultVulp/action-pipenv@v2.0.1
+    - name: Install pipenv
+      run: |
+        pip install pipenv
+    - name: Cache pipenv
+      id: cache-pipenv
+      uses: actions/cache@v2
       with:
-        command: install -d # Install all dependencies, including development ones
-    - name: Install test dependencies # needed for tests using diff-pdf-visually
-      uses: lyricwulf/abc@v1
-      with:
-        macos: imagemagick, poppler
-        linux: imagemagick, poppler-utils
-        windows: imagemagick, poppler
+        path: ~/.local/share/virtualenvs
+        key: ${{ runner.os }}-python-${{ matrix.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-python-${{ matrix.python-version }}-pipenv-
+    - name: Install Kassia dependencies
+      if: steps.cache-pipenv.outputs.cache-hit != 'true'
+      run: |
+        pipenv install --deploy --dev
+    #- name: Lint
+      #- run: pipenv run isort --recursive --diff
+      #- run: pipenv run black --check .
+      #- run: pipenv run flake8
+      #- run: pipenv run mypy
+    - name: Install pytest dependencies # needed for tests using diff-pdf-visually
+      run: |
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          sudo apt-get install -qq -o=Dpkg::Use-Pty=0 imagemagick
+          sudo apt-get install -qq -o=Dpkg::Use-Pty=0 poppler-utils
+        elif [ "$RUNNER_OS" == "Windows" ]; then
+          choco install --no-progress imagemagick
+          choco install --no-progress poppler
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          brew install -q imagemagick
+          brew install -q poppler
+        else
+          echo "$RUNNER_OS not supported"
+        fi
     - name: Test with pytest
-      uses: VaultVulp/action-pipenv@v2.0.1  
-      with:
-        command: run pytest
+      run: | # skip Windows for now, since it fails, https://github.com/pytest-dev/pytest/issues/8191
+        if [ "$RUNNER_OS" != "Windows" ]; then
+          pipenv run pytest
+        fi
