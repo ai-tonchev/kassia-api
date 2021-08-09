@@ -1,7 +1,5 @@
 from collections.abc import MutableSequence
 
-from reportlab.pdfbase import pdfmetrics
-
 from neume import Neume
 
 
@@ -44,11 +42,10 @@ class NeumeChunk(MutableSequence):
         return str(self.list)
 
     def set_width(self):
-        sum(pdfmetrics.stringWidth(neume.char, neume.font_fullname, neume.font_size) for neume in self.list if neume.standalone)
+        sum(neume.width for neume in self.list if neume.standalone)
 
     def set_height(self, neume):
-        ascent, descent = pdfmetrics.getAscentDescent(neume.font_fullname, neume.font_size)
-        self.height = ascent - descent
+        self.height = neume.height
 
     def add_width(self, neume):
         self.width += neume.width

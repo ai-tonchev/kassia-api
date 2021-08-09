@@ -1,31 +1,32 @@
 #!/usr/bin/python
-import sys
 import logging
+import sys
 from copy import deepcopy
-from typing import Any, Dict, List, Iterator
-
-from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT, TA_JUSTIFY
-from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet, StyleSheet1
-from reportlab.pdfbase import pdfmetrics
-from reportlab.platypus import PageBreak, Paragraph, Spacer
+from typing import Any, Dict, Iterator, List
 from xml.etree.ElementTree import Element, ParseError, parse
 
-from font_reader import find_and_register_fonts
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT, TA_RIGHT
+from reportlab.lib.styles import (ParagraphStyle, StyleSheet1,
+                                  getSampleStyleSheet)
+from reportlab.pdfbase import pdfmetrics
+from reportlab.platypus import PageBreak, Paragraph, Spacer
+
 from complex_doc_template import ComplexDocTemplate
 from coord import Coord
 from drop_cap import Dropcap
-from syllable_line import SyllableLine
-from syllable import Syllable
+from font_reader import find_and_register_fonts
 from lyric import Lyric
-from neume import Neume, NeumeType, NeumeBnml
+from neume import Neume, NeumeBnml, NeumeType
 from neume_chunk import NeumeChunk
 from score import Score
+from syllable import Syllable
+from syllable_line import SyllableLine
 
 
 class Kassia:
     """Base class for package"""
 
-    def __init__(self, input_filename, output_file="examples/sample.pdf"):
+    def __init__(self, input_filename, output_file="examples/sample.pdf", use_system_fonts=False):
         self.bnml = None
         self.doc = None  # SimpleDocTemplate()
         self.story = []
@@ -39,7 +40,7 @@ class Kassia:
         self.scoreStyleSheet = StyleSheet1()
         self.init_styles()
         self.input_filename: str = input_filename
-        
+
         try:
             open(input_filename, "r")
         except IOError:
@@ -343,7 +344,7 @@ class Kassia:
 
     def _parse_lyric(self, lyric_elem: Element) -> Lyric:
         """Use lyric info from bnml to create Lyric.
-        
+
         :param lyric_elem: Lyric element in bnml.
         """
         lyrics_style = self.scoreStyleSheet['lyric']
@@ -416,11 +417,11 @@ class Kassia:
         try:
             neume_cat_str = neume_elem.attrib['type']
             neume_cat = NeumeType[neume_cat_str]
-        except KeyError as ke:
+        except KeyError:
             if is_first_in_chunk and neume_name_str != 'bare':
                 neume_cat = NeumeType.primary
             else:
-                #logging.info("Neume type not specified for {}. Assuming 'secondary'.".format(neume_name_str))
+                # logging.info("Neume type not specified for {}. Assuming 'secondary'.".format(neume_name_str))
                 neume_cat = NeumeType.secondary
         return NeumeBnml(neume_name_str, neume_cat)
 
@@ -454,7 +455,7 @@ class Kassia:
 
         # Create string of conditional neume names, separated by underscores
         starting_index = neume_group.index(base_neume)
-        secondary_neumes = neume_group[starting_index+1:]
+        secondary_neumes = neume_group[starting_index + 1:]
         secondary_neumes_str = self.convert_neumegroup_to_str(secondary_neumes)
 
         # Convert neume group to string separated by underscores for processing
@@ -755,7 +756,7 @@ class Kassia:
         """
         if not self.footer_paragraph:
             return
-            
+
         style = self.footer_paragraph.style
 
         if style.borderWidth:
@@ -803,7 +804,7 @@ class Kassia:
         cr = starting_pos
         syl_line_list: List[SyllableLine] = []
         syl_line: SyllableLine = SyllableLine(line_spacing, syl_spacing)
-        
+
         # Need to shift neumes and lyrics up by this amount, since syllable will be drawn aligned to bottom, and
         # lyrics are being added below neumes
         y_offset = max(getattr(syl.lyric, 'top_margin', 0) for syl in syl_list)
@@ -839,7 +840,7 @@ class Kassia:
                 adj_neume_pos = (syl.width - neume_width) / 2.
 
             syl.neume_chunk_pos.x = cr.x + adj_neume_pos
-            syl.neume_chunk_pos.y = y_offset/2.
+            syl.neume_chunk_pos.y = y_offset / 2.
             syl.lyric_pos.x = cr.x + adj_lyric_pos
             syl.lyric_pos.y = cr.y
             cr.x += syl.width + syl_spacing
@@ -865,7 +866,7 @@ class Kassia:
         for line_index, line in enumerate(line_list):
             # Calc width of each chunk (and count how many chunks)
             total_chunk_width = sum(syl.width for syl in line)
-            
+
             # Skip if last line
             if line_index + 1 == len(line_list):
                 continue

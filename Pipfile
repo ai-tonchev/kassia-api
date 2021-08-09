@@ -10,7 +10,9 @@ schema = ">=0.7.2"
 
 [dev-packages]
 pylint = "*"
+flake8 = "*"
 pytest = "*"
+isort = "*"
 diff-pdf-visually = ">=1.6.2"
 
 [requires]

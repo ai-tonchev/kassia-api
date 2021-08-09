@@ -5,9 +5,9 @@ name: Python package
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, github-actions ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, github-actions ]
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest] #, windows-latest]
+        os: [ubuntu-latest, macos-latest] #, windows-latest] # skip Windows for now, since it always fails, https://github.com/pytest-dev/pytest/issues/8191
         python-version: [3.7]
     defaults:
       run:
@@ -41,11 +41,10 @@ jobs:
       if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: |
         pipenv install --deploy --dev
-    #- name: Lint
-      #- run: pipenv run isort --recursive --diff
-      #- run: pipenv run black --check .
-      #- run: pipenv run flake8
-      #- run: pipenv run mypy
+    - name: Lint
+      run: |
+        pipenv run isort . --recursive --diff
+        pipenv run flake8
     - name: Install pytest dependencies # needed for tests using diff-pdf-visually
       run: |
         if [ "$RUNNER_OS" == "Linux" ]; then
@@ -61,7 +60,5 @@ jobs:
           echo "$RUNNER_OS not supported"
         fi
     - name: Test with pytest
-      run: | # skip Windows for now, since it fails, https://github.com/pytest-dev/pytest/issues/8191
-        if [ "$RUNNER_OS" != "Windows" ]; then
-          pipenv run pytest
-        fi
+      run: | 
+        pipenv run pytest

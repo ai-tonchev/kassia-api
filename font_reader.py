@@ -1,6 +1,6 @@
 #!/usr/bin/python
-import os
 import logging
+import os
 from pathlib import Path
 from typing import Dict
 
@@ -8,34 +8,34 @@ from reportlab import rl_settings
 from reportlab.lib import fontfinder
 from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont, TTFError
-
+from reportlab.pdfbase.ttfonts import TTFError, TTFont
 from ruamel.yaml import YAML, YAMLError
-from schema import Schema, And, Optional, SchemaError
+from schema import And, Optional, Schema, SchemaError
 
 font_classes_schema = Schema({
-            'family_name': str,
-            'takes_lyric': [str],
-            'standalone': [str],
-            Optional('keep_with_next'): [str],
-            Optional('lyric_offsets'): {str: float},
-            Optional('accidentals'): [str],
-            Optional('martyriae'): [str],
-            Optional('tempo_markings'): [str],
-            Optional('chronos'): [str],
-            Optional('rests'): [str],
-            Optional('optional_ligatures'): {str: {And('name'): str, And('component_glyphs'): str}},
-            Optional('conditional_neumes'): {str: {And('base_neume'): list, And('component_glyphs'): list, And('replace_glyph'): str, And('draw_glyph'): str}},
-        })
+    'family_name': str,
+    'takes_lyric': [str],
+    'standalone': [str],
+    Optional('keep_with_next'): [str],
+    Optional('lyric_offsets'): {str: float},
+    Optional('accidentals'): [str],
+    Optional('martyriae'): [str],
+    Optional('tempo_markings'): [str],
+    Optional('chronos'): [str],
+    Optional('rests'): [str],
+    Optional('optional_ligatures'): {str: {And('name'): str, And('component_glyphs'): str}},
+    Optional('conditional_neumes'): {str: {And('base_neume'): list, And('component_glyphs'):
+                                           list, And('replace_glyph'): str, And('draw_glyph'): str}},
+})
 
 font_glyphnames_schema = Schema({
-            str: {
-                And('family'): str,
-                And('codepoint'): str,
-                Optional('component_glyphs'): [str],
-                Optional('description'): str,
-            },
-        })
+    str: {
+        And('family'): str,
+        And('codepoint'): str,
+        Optional('component_glyphs'): [str],
+        Optional('description'): str,
+    }
+})
 
 
 def _get_neume_dict(font_folder_path: str) -> Dict:
@@ -74,7 +74,7 @@ def _load_font_config(filepath: str, validator: Schema) -> Dict:
     return font_config
 
 
-def find_and_register_fonts(check_sys_fonts=False) -> Dict:
+def find_and_register_fonts(check_sys_fonts: bool = False) -> Dict:
     """Search for fonts and register them.
 
     If check_sys_fonts is false, function will only use fonts in local
@@ -83,10 +83,11 @@ def find_and_register_fonts(check_sys_fonts=False) -> Dict:
     :param check_sys_fonts: Whether to search system for fonts.
     :return: Font configuration as a dictionary.
     """
-    ff = fontfinder.FontFinder( useCache=False)
+    ff = fontfinder.FontFinder(useCache=False)
 
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     local_font_dir = os.path.join(str(base_dir), 'kassia/fonts')
+    logging.info("Searching {} path for local fonts...".format(local_font_dir))
     ff.addDirectory(local_font_dir, recur=True)
 
     if check_sys_fonts:
@@ -100,13 +101,12 @@ def find_and_register_fonts(check_sys_fonts=False) -> Dict:
 
     _register_fonts(ff)
 
-    neume_font_configs = _get_neume_dict(local_font_dir)
-    return neume_font_configs
+    return _get_neume_dict(local_font_dir)
 
 
 def _register_fonts(font_finder: fontfinder.FontFinder):
     """Search font_path for TTF's and register them.
-    
+
     Registers discovered fonts as part of family if multiple weights are found.
     ReportLab usually keeps a cache after searching a directory.
     I have this cache disabled because it doesn't seem to work correctly.

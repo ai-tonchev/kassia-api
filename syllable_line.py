@@ -64,7 +64,7 @@ class SyllableLine(Flowable, MutableSequence):
                 # Middle of word
                 else:
                     coord = syl.lyric_pos
-                    
+
                 if syl.takes_lyric:
                     self._draw_dash(canvas,
                                     coord,
@@ -74,7 +74,7 @@ class SyllableLine(Flowable, MutableSequence):
             # End of word
             elif starting_lyric is not None:
                 starting_lyric = None
-    
+
     def draw_extenders(self, canvas):
         """Draw extenders connecting two or more sets of lyrics in a line.
 
@@ -118,7 +118,7 @@ class SyllableLine(Flowable, MutableSequence):
                     x2 = self._get_special_extender_end_position(syl)
                 self._draw_extender(canvas, x1, y1, x2, y2, starting_lyric)
                 x1, x2 = None, None
-        
+
         # If extender goes to end of line
         if x1 is not None:
             self._draw_extender(canvas, x1, y1, x2, y2, starting_lyric)
@@ -129,10 +129,10 @@ class SyllableLine(Flowable, MutableSequence):
 
         :param syl: Current syllable.
         :returns: Dash position as Coordinate
-        """      
+        """
         lyric_space_width = pdfmetrics.stringWidth(' ', syl.lyric.font_family, syl.lyric.font_size)
-        return Coord(syl.lyric_pos.x + syl.lyric.width + (lyric_space_width*2), syl.lyric_pos.y)
-    
+        return Coord(syl.lyric_pos.x + syl.lyric.width + (lyric_space_width * 2), syl.lyric_pos.y)
+
     @staticmethod
     def _get_extender_start_position(syl: Syllable) -> float:
         """Return extender starting position (x position), after lyric.
@@ -141,7 +141,7 @@ class SyllableLine(Flowable, MutableSequence):
         """
         lyric_space_width = pdfmetrics.stringWidth(' ', syl.lyric.font_family, syl.lyric.font_size)
         return syl.lyric_pos.x + syl.lyric.width + lyric_space_width
-    
+
     @staticmethod
     def _get_extender_end_position(syl: Syllable) -> float:
         """Return extender end position (x position), which is at end of neume (neume width).
@@ -149,14 +149,14 @@ class SyllableLine(Flowable, MutableSequence):
         :param syl: Current syllable.
         """
         return syl.neume_chunk_pos.x + syl.width
-    
+
     @staticmethod
     def _get_special_extender_end_position(syl: Syllable) -> float:
         """Return extender end position when special lyric offset.
         :param syl: Current syllable.
         """
         return syl.neume_chunk_pos.x + syl.lyric_offset
-    
+
     @staticmethod
     def _draw_extender(canvas: Canvas, x1: float, y1: float, x2: float, y2: float, starting_lyric: Lyric):
         """Draw an underscore extender connecting two or more sets of lyrics.
@@ -171,7 +171,7 @@ class SyllableLine(Flowable, MutableSequence):
             canvas.setStrokeColor(starting_lyric.color)
             canvas.setFont(starting_lyric.font_family, starting_lyric.font_size)
             canvas.line(x1, y1, x2, y2)
-    
+
     @staticmethod
     def _draw_dash(canvas: Canvas, dash_coord: Coord, color: str, font_family: str, font_size: int):
         """Draw a set of dashes connecting two or more sets of lyrics.

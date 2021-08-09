@@ -2,7 +2,7 @@ import sys
 from typing import Dict
 
 from reportlab.pdfgen import canvas
-from reportlab.platypus import Frame, PageTemplate, BaseDocTemplate
+from reportlab.platypus import BaseDocTemplate, Frame, PageTemplate
 from reportlab.platypus.doctemplate import _doNothing
 
 
@@ -53,7 +53,7 @@ class ComplexDocTemplate(BaseDocTemplate):
         """
         try:
             self.pagesize = getattr(sys.modules[__name__], name)
-        except AttributeError as e:
+        except AttributeError:
             pass
 
     def set_margins(self, margins: Dict[str, int] = None):
@@ -82,7 +82,7 @@ class ComplexDocTemplate(BaseDocTemplate):
         :param enable_ligatures: A boolean setting.
         """
         self.ligatures_enabled = ligatures_enabled
-    
+
     @property
     def top(self) -> int:
         """Get the position at the top of the page, taking into account margins.
@@ -111,7 +111,7 @@ class ComplexDocTemplate(BaseDocTemplate):
         """Get the position at the right size of the page, taking into account margins.
         :return: Position at the right of the page.
         """
-        #return self.pagesize[0] - self.rightMargin
+        # return self.pagesize[0] - self.rightMargin
         return self._rightMargin
 
     @property
@@ -119,4 +119,4 @@ class ComplexDocTemplate(BaseDocTemplate):
         """Get the position at the center of the page.
         :return: Position at the center of the page.
         """
-        return self.pagesize[0]/2
+        return self.pagesize[0] / 2

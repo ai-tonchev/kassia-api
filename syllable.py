@@ -16,10 +16,10 @@ class Syllable(Flowable):
                  lyric_pos: Coord = None,
                  ):
         super().__init__()
-        self.neume_chunk: NeumeChunk = neume_chunk  # A list of neumes, one base neume and some zero width supporting characters
-        self.neume_chunk_pos: Coord = neume_chunk_pos if neume_chunk_pos is not None else Coord(0,0)
+        self.neume_chunk: NeumeChunk = neume_chunk
+        self.neume_chunk_pos: Coord = neume_chunk_pos if neume_chunk_pos is not None else Coord(0, 0)
         self.lyric: Lyric = lyric
-        self.lyric_pos: Coord = lyric_pos if lyric_pos is not None else Coord(0,0)
+        self.lyric_pos: Coord = lyric_pos if lyric_pos is not None else Coord(0, 0)
         self.width, self.height = self.calc_size()
         self.category: SyllableType = self.calc_category()
 
@@ -80,7 +80,7 @@ class Syllable(Flowable):
             return self.lyric.text
         else:
             return None
-    
+
     @property
     def lyric_offset(self) -> float:
         """Returns the lyric offset of the base neume of a chunk.
