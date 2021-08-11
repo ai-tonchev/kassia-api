@@ -1,5 +1,7 @@
 # Kassia
 
+![build](https://img.shields.io/github/workflow/status/t-bullock/kassia/build)
+
 Kassia is a scoring program for creating music written in Byzantine notation. It takes an XML file, parses the neumes and lyrics, and generates a formatted PDF using [ReportLab](https://www.reportlab.com).
 
 ## Requirements
@@ -36,7 +38,8 @@ We need your help with documentation, testing, and submitting fixes and features
 Before submitting a pull request, make sure your changes pass all tests.
 
 1. Install development dependencies by running ```pipenv install --dev```
-2. Run tests:
+2. Install [imagemagick](http://www.imagemagick.org) and [poppler](https://github.com/freedesktop/poppler)
+3. Run tests:
   - ```pipenv run pytest```
   - ```pipenv run flake8```
   - ```pipenv run isort . --recursive --diff```
