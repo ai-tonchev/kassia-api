@@ -39,15 +39,3 @@ def test_underscore(tmp_path: Path):
     output_file_path: str = str(tmp_path) + "/underscore_test_new.pdf"
     Kassia("tests/underscore_test.xml", output_file_path)
     assert pdfdiff("tests/underscore_test.pdf", output_file_path)
-
-
-def test_example(tmp_path: Path):
-    output_file_path: str = str(tmp_path) + "/sample.pdf"
-    Kassia("examples/sample.xml", output_file_path)
-    assert pdfdiff("examples/sample.pdf", output_file_path, threshold=30)
-
-
-def test_example_two(tmp_path: Path):
-    output_file_path: str = str(tmp_path) + "/sample2.pdf"
-    Kassia("examples/sample2.xml", output_file_path)
-    assert pdfdiff("examples/sample2.pdf", output_file_path)
