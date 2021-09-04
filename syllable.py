@@ -23,7 +23,7 @@ class Syllable(Flowable):
         self.width, self.height = self.calc_size()
         self.category: SyllableType = self.calc_category()
 
-    def calc_size(self) -> float:
+    def calc_size(self) -> [float, float]:
         width = max(getattr(self.neume_chunk, 'width', 0), getattr(self.lyric, 'width', 0))
         height = getattr(self.neume_chunk, 'height', 0)\
             + getattr(self.lyric, 'height', 0)
@@ -73,7 +73,7 @@ class Syllable(Flowable):
         return self.neume_chunk.base_neume
 
     @property
-    def lyric_text(self) -> float:
+    def lyric_text(self) -> str or None:
         """Returns the lyric offset of the base neume of a chunk.
         """
         if self.lyric:
