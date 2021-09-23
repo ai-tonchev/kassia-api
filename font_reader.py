@@ -9,7 +9,7 @@ from reportlab.lib import fontfinder
 from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFError, TTFont
-from ruamel.yaml import YAML, YAMLError
+from ruyaml import YAML, YAMLError
 from schema import And, Optional, Schema, SchemaError
 
 font_classes_schema = Schema({
