@@ -1,4 +1,5 @@
 from reportlab.platypus import Flowable
+from typing import Tuple
 
 from coord import Coord
 from lyric import Lyric
@@ -23,7 +24,7 @@ class Syllable(Flowable):
         self.width, self.height = self.calc_size()
         self.category: SyllableType = self.calc_category()
 
-    def calc_size(self) -> [float, float]:
+    def calc_size(self) -> Tuple[float, float]:
         width = max(getattr(self.neume_chunk, 'width', 0), getattr(self.lyric, 'width', 0))
         height = getattr(self.neume_chunk, 'height', 0)\
             + getattr(self.lyric, 'height', 0)
