@@ -17,8 +17,8 @@ class SyllableLine(Flowable, MutableSequence):
         super().__init__(*args)
         self.list: List[Syllable] = list()
         self.extend(list(args))
-        self.leading = leading
-        self.syllableSpacing = syllable_spacing
+        self.leading: float = leading
+        self.syllableSpacing: float = syllable_spacing
 
     def wrap(self, *args):
         self.set_size()

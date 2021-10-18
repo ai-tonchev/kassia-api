@@ -6,14 +6,14 @@ from reportlab.platypus import Flowable
 
 
 class Dropcap(Flowable):
-    def __init__(self, text: str = None, x_padding: int = 10, style: ParagraphStyle = ParagraphStyle('Dropcap')):
+    def __init__(self, text: str = None, x_padding: float = 10, style: ParagraphStyle = ParagraphStyle('Dropcap')):
         super().__init__()
-        self.text = text
-        self.x_padding = x_padding
-        self.style = style
-        self.width = pdfmetrics.stringWidth(self.text, self.style.fontName, self.style.fontSize)
+        self.text: str = text
+        self.x_padding: float = x_padding
+        self.style: ParagraphStyle = style
+        self.width: float = pdfmetrics.stringWidth(self.text, self.style.fontName, self.style.fontSize)
         ascent, descent = pdfmetrics.getAscentDescent(self.style.fontName, self.style.fontSize)
-        self.height = max(ascent - descent, self.style.leading)
+        self.height: float = max(ascent - descent, self.style.leading)
 
     def wrap(self, *args):
         return self.width + self.x_padding, self.height
@@ -36,7 +36,7 @@ class Dropcap(Flowable):
         canvas.setFont(self.style.fontName, self.style.fontSize)
         canvas.drawString(0, 0, self.text)
 
-    def _draw_background(self, canvas):
+    def _draw_background(self, canvas: Canvas):
         """
         Draws a dropcap background. Logic copied from drawPara() method in Paragraph class.
         """
