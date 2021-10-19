@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [ main, github-actions ]
 
+env:
+  POETRY_VERSION: 1.1.11
+  POETRY_URL: https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -21,44 +25,54 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install pipenv
-      run: |
-        pip install pipenv
-    - name: Cache pipenv
-      id: cache-pipenv
-      uses: actions/cache@v2
-      with:
-        path: ~/.local/share/virtualenvs
-        key: ${{ runner.os }}-python-${{ matrix.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-python-${{ matrix.python-version }}-pipenv-
-    - name: Install Kassia dependencies
-      if: steps.cache-pipenv.outputs.cache-hit != 'true'
-      run: |
-        pipenv install --deploy --dev
-    - name: Lint
-      run: |
-        pipenv run isort . --recursive --diff
-        pipenv run flake8
-    - name: Install pytest dependencies # needed for tests using diff-pdf-visually
-      run: |
-        if [ "$RUNNER_OS" == "Linux" ]; then
-          sudo apt-get install -qq -o=Dpkg::Use-Pty=0 imagemagick
-          sudo apt-get install -qq -o=Dpkg::Use-Pty=0 poppler-utils
-        elif [ "$RUNNER_OS" == "Windows" ]; then
-          choco install --no-progress imagemagick
-          choco install --no-progress poppler
-        elif [ "$RUNNER_OS" == "macOS" ]; then
-          brew install -q imagemagick
-          brew install -q poppler
-        else
-          echo "$RUNNER_OS not supported"
-        fi
-    - name: Test with pytest
-      run: | 
-        pipenv run pytest
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Poetry cache depends on OS, Python version and Poetry version.
+      - name: Cache Poetry cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            if [ "$RUNNER_OS" == "Linux" ]; then
+              ~/.cache/pypoetry
+            elif [ "$RUNNER_OS" == "Windows" ]; then
+              C:\Users\<username>\AppData\Local\pypoetry\Cache
+            elif [ "$RUNNER_OS" == "macOS" ]; then
+              ~/Library/Caches/pypoetry
+          key: poetry-cache-${{ runner.os }}-${{ matrix.python-version }}-${{ env.POETRY_VERSION }}
+      # virtualenv cache should depends on OS, Python version and `poetry.lock` (and optionally workflow files).
+      - name: Cache Packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.local
+          key: poetry-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/*.yml') }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Poetry
+        run: |
+          curl -sSL ${{ env.POETRY_URL }} | python - --version ${{ env.POETRY_VERSION }}
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: Install Dependencies
+        run: poetry install
+      - name: Lint
+        run: |
+          poetry run isort . --recursive --diff
+          poetry run flake8
+      - name: Install pytest dependencies # needed for tests using diff-pdf-visually
+        run: |
+          if [ "$RUNNER_OS" == "Linux" ]; then
+            sudo apt-get install -qq -o=Dpkg::Use-Pty=0 imagemagick
+            sudo apt-get install -qq -o=Dpkg::Use-Pty=0 poppler-utils
+          elif [ "$RUNNER_OS" == "Windows" ]; then
+            choco install --no-progress imagemagick
+            choco install --no-progress poppler
+          elif [ "$RUNNER_OS" == "macOS" ]; then
+            brew install -q imagemagick
+            brew install -q poppler
+          else
+            echo "$RUNNER_OS not supported"
+          fi
+      - name: Test with pytest
+        run: | 
+          poetry run pytest
