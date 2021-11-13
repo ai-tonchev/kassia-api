@@ -47,7 +47,7 @@ class Kassia:
             logging.error("XML file not readable.")
             return
 
-        self.neume_info_dict: Dict = find_and_register_fonts()
+        self.neume_info_dict: Dict = find_and_register_fonts(use_system_fonts)
         self.parse_file()
         self.build_document(output_file)
         self.create_pdf()
