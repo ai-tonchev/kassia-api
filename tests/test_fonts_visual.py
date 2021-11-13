@@ -39,3 +39,15 @@ def test_underscore(tmp_path: Path):
     output_file_path: str = str(tmp_path) + "/underscore_test_new.pdf"
     Kassia("tests/underscore_test.xml", output_file_path)
     assert pdfdiff("tests/underscore_test.pdf", output_file_path)
+
+
+def test_paragraph_formatting(tmp_path: Path):
+    output_file_path: str = str(tmp_path) + "/paragraph_test_new.pdf"
+    Kassia("tests/paragraph_test.xml", output_file_path)
+    assert pdfdiff("tests/paragraph_test.pdf", output_file_path)
+
+
+def test_header_footer(tmp_path: Path):
+    output_file_path: str = str(tmp_path) + "/header_footer_test_new.pdf"
+    Kassia("tests/header_footer_test.xml", output_file_path)
+    assert pdfdiff("tests/header_footer_test.pdf", output_file_path)

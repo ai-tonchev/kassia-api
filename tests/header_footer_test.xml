@@ -1,0 +1,72 @@
+<bnml>
+    <defaults>
+        <page-layout>
+            <paper-size>letter</paper-size>
+            <page-margins top_margin="50" bottom_margin="50" left_margin="60" right_margin="60" />
+        </page-layout>
+        <styles>
+            <para-style name="header" font_family="Alegreya-Italic" font_size="8" align="center" border_width="1.0" border_color="#0000e6" border_padding="10" />
+            <para-style name="footer" font_family="Alegreya-Italic" font_size="8" align="center" border_width="1.0" border_color="#0000e6" border_padding="10" />
+            <score-style font_family="KA New Stathis" font_size="30" align="justify" word_spacing="0" leading="60" />
+            <neume-style type="ordinary" color="#000000" />
+            <neume-style type="accidental" color="#cf232b" />
+            <neume-style type="chronos" color="#cf232b" />
+            <neume-style type="martyria" color="#cf232b" />
+            <lyric-style font_family="Alegreya-Regular" font_size="14" color="#000000" space_before="26" />
+            <dropcap-style font_family="Alegreya-Regular" font_size="46" color="#000000" />
+        </styles>
+    </defaults>
+
+    <music>
+        <header-odd>
+            Header on Odd Pages, page number right aligned
+            <page-number align="right" />
+        </header-odd>
+        <header-even>
+            <page-number align="left" />
+            Header (right aligned) on Even Pages, page number left aligned
+        </header-even>
+
+        <footer>
+            Link on every page: https://github.com/t-bullock/kassia
+        </footer>
+
+        <para>
+            Header/Footer Test
+        </para>
+
+        <!--score>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <pagebreak />
+
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+        </score>
+
+        <pagebreak />
+
+        <score>
+            <syllable>
+                <neume-group>
+                    <neume>ison</neume>
+                </neume-group>
+            </syllable>
+        </score-->
+
+        <pagebreak />
+        <pagebreak />
+        <pagebreak />
+        <pagebreak />
+        <pagebreak />
+    </music>
+</bnml>
