@@ -23,8 +23,8 @@
             <page-number align="right" />
         </header-odd>
         <header-even>
-            <page-number align="left" />
             Header (right aligned) on Even Pages, page number left aligned
+            <page-number align="left" />
         </header-even>
 
         <footer>

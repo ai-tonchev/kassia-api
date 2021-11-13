@@ -36,8 +36,8 @@
             <page-number align="right" />
         </header-odd>
         <header-even>
-            <page-number align="left" />
             First Mode – Lord, I Have Cried
+            <page-number align="left" />
         </header-even>
 
         <footer>
@@ -1285,14 +1285,14 @@
 
         <pagebreak />
 
-        <header-odd>
+        <!--header-odd>
             First Mode – Slow Stichera
             <page-number align="right" />
         </header-odd>
         <header-even>
-            <page-number align="left" />
             First Mode – Slow Stichera
-        </header-even>
+            <page-number align="left" />
+        </header-even-->
 
         <para style="title">
             Slow Stichera
