@@ -2,7 +2,7 @@
 import logging
 import sys
 from copy import deepcopy
-from typing import Any, Dict, Iterator, List
+from typing import Any, Dict, Iterator, List, Tuple
 from xml.etree.ElementTree import Element, ParseError, parse
 
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT, TA_RIGHT
@@ -31,12 +31,18 @@ class Kassia:
         self.doc = None  # SimpleDocTemplate()
         self.story = []
         self.styleSheet = getSampleStyleSheet()
+        self.header_first_paragraph: Paragraph = None
+        self.header_first_pagenum_style: ParagraphStyle = None
         self.header_even_paragraph: Paragraph = None
         self.header_even_pagenum_style: ParagraphStyle = None
         self.header_odd_paragraph: Paragraph = None
         self.header_odd_pagenum_style: ParagraphStyle = None
-        self.footer_paragraph: Paragraph = None
-        self.footer_pagenum_style: ParagraphStyle = None
+        self.footer_first_paragraph: Paragraph = None
+        self.footer_first_pagenum_style: ParagraphStyle = None
+        self.footer_even_paragraph: Paragraph = None
+        self.footer_even_pagenum_style: ParagraphStyle = None
+        self.footer_odd_paragraph: Paragraph = None
+        self.footer_odd_pagenum_style: ParagraphStyle = None
         self.scoreStyleSheet = StyleSheet1()
         self.init_styles()
         self.input_filename: str = input_filename
@@ -206,12 +212,42 @@ class Kassia:
         music = bnml_file.find('music')
         if music:
             for music_elem in music:
-                if music_elem.tag in ['header-even', 'header']:
-                    self._parse_header_even(music_elem)
+                if music_elem.tag == 'header-even':
+                    self.header_even_paragraph, self.header_even_pagenum_style = self._parse_header_footer(
+                        music_elem,
+                        self.styleSheet['Header'])
                 elif music_elem.tag == 'header-odd':
-                    self._parse_header_odd(music_elem)
+                    self.header_odd_paragraph, self.header_odd_pagenum_style = self._parse_header_footer(
+                        music_elem,
+                        self.styleSheet['Header'])
+                elif music_elem.tag == 'header-first':
+                    self.header_first_paragraph, self.header_first_pagenum_style = self._parse_header_footer(
+                        music_elem,
+                        self.styleSheet['Header'])
+                elif music_elem.tag == 'header':
+                    self.header_first_paragraph, self.header_first_pagenum_style = self._parse_header_footer(
+                        music_elem,
+                        self.styleSheet['Header'])
+                    self.header_even_paragraph = self.header_odd_paragraph = self.header_first_paragraph
+                    self.header_even_pagenum_style = self.header_odd_pagenum_style = self.header_first_pagenum_style
+                elif music_elem.tag == 'footer-even':
+                    self.footer_even_paragraph, self.footer_even_pagenum_style = self._parse_header_footer(
+                        music_elem,
+                        self.styleSheet['Footer'])
+                elif music_elem.tag == 'footer-odd':
+                    self.footer_odd_paragraph, self.footer_odd_pagenum_style = self._parse_header_footer(
+                        music_elem,
+                        self.styleSheet['Footer'])
+                elif music_elem.tag == 'footer-first':
+                    self.footer_first_paragraph, self.footer_first_pagenum_style = self._parse_header_footer(
+                        music_elem,
+                        self.styleSheet['Footer'])
                 elif music_elem.tag == 'footer':
-                    self._parse_footer(music_elem)
+                    self.footer_first_paragraph, self.footer_first_pagenum_style = self._parse_header_footer(
+                        music_elem,
+                        self.styleSheet['Footer'])
+                    self.footer_even_paragraph = self.footer_odd_paragraph = self.footer_first_paragraph
+                    self.footer_even_pagenum_style = self.footer_odd_pagenum_style = self.footer_first_pagenum_style
                 elif music_elem.tag == 'pagebreak':
                     self._parse_pagebreak(music_elem)
                 elif music_elem.tag == 'linebreak':
@@ -219,48 +255,38 @@ class Kassia:
                 elif music_elem.tag in ['para', 'paragraph']:
                     self._parse_paragraph(music_elem)
                 elif music_elem.tag == 'score':
-                    self._parse_score(music_elem)
+                    score = self._parse_score(music_elem)
+                    self.story.append(score)
 
-    def _parse_header_even(self, header_elem: Element):
-        default_header_style = self.styleSheet['Header']
-        header_attrib_dict = self.fill_attribute_dict(header_elem.attrib)
-        if 'style' in header_attrib_dict:
-            default_header_style = getattr(self.styleSheet, header_attrib_dict['style'], 'Header')
-        header_style = self.merge_paragraph_styles(default_header_style, header_attrib_dict)
-        header_text = header_elem.text.strip()
-        self.header_even_paragraph: Paragraph = Paragraph(header_text, header_style)
+    def _parse_header_footer(self, elem: Element, default_style: ParagraphStyle) -> Tuple[Paragraph, ParagraphStyle]:
+        """Parse either the header or footer. Checks for local style overrides.
 
-        for embedded_attrib in header_elem:
-            if embedded_attrib.tag is not None and embedded_attrib.tag == 'page-number':
-                pagenum_attrib_dict = self.fill_attribute_dict(embedded_attrib.attrib)
-                self.header_even_pagenum_style = self.merge_paragraph_styles(default_header_style, pagenum_attrib_dict)
+        :param elem: Header or footer element in BNML.
+        :param default_style: Default header or footer style.
+        :return: A paragraph of text and the page number (if it exists).
+        """
+        para_style = default_style
+        elem_attrs = self.fill_attribute_dict(elem.attrib)
 
-    def _parse_header_odd(self, header_elem: Element):
-        default_header_style = self.styleSheet['Header']
-        header_attrib_dict = self.fill_attribute_dict(header_elem.attrib)
-        if 'style' in header_attrib_dict:
-            default_header_style = getattr(self.styleSheet, header_attrib_dict['style'], 'Header')
-        header_style = self.merge_paragraph_styles(default_header_style, header_attrib_dict)
-        header_text = header_elem.text.strip()
-        self.header_odd_paragraph: Paragraph = Paragraph(header_text, header_style)
+        if 'style' in elem_attrs:
+            try:
+                para_style = self.styleSheet[elem_attrs['style']]
+            except KeyError as ke:
+                logging.error("Failed to set new header/footer style: {}".format(ke))
+        else:
+            para_style = self.merge_paragraph_styles(default_style, elem_attrs)
 
-        for embedded_attrib in header_elem:
-            if embedded_attrib.tag is not None and embedded_attrib.tag == 'page-number':
-                pagenum_attrib_dict = self.fill_attribute_dict(embedded_attrib.attrib)
-                self.header_odd_pagenum_style = self.merge_paragraph_styles(default_header_style, pagenum_attrib_dict)
+        elem_text = elem.text.strip()
+        paragraph: Paragraph = Paragraph(elem_text, para_style)
 
-    def _parse_footer(self, music_elem: Element):
-        default_footer_style = self.styleSheet['Footer']
-        footer_attrib_dict = self.fill_attribute_dict(music_elem.attrib)
-        if 'style' in footer_attrib_dict:
-            default_footer_style = getattr(self.styleSheet, footer_attrib_dict['style'], 'Footer')
-        footer_style = self.merge_paragraph_styles(default_footer_style, footer_attrib_dict)
-        footer_text = music_elem.text.strip()
-        self.footer_paragraph: Paragraph = Paragraph(footer_text, footer_style)
-        for embedded_attrib in music_elem:
-            if embedded_attrib.tag is not None and embedded_attrib.tag == 'page-number':
-                pagenum_attrib_dict = self.fill_attribute_dict(embedded_attrib.attrib)
-                self.footer_pagenum_style = self.merge_paragraph_styles(default_footer_style, pagenum_attrib_dict)
+        page_num_elem = elem.find('page-number')
+        if page_num_elem is not None:
+            pagenum_attrs = self.fill_attribute_dict(page_num_elem.attrib)
+            pagenum_style = self.merge_paragraph_styles(default_style, pagenum_attrs)
+        else:
+            pagenum_style = None
+
+        return paragraph, pagenum_style
 
     def _parse_pagebreak(self, music_elem: Element):
         self.story.append(PageBreak())
