@@ -725,10 +725,13 @@ class Kassia:
     def draw_header_footer(self, canvas, doc):
         if doc.pageTemplate.id == 'Even':
             self.draw_header(canvas, doc, self.header_even_paragraph, self.header_even_pagenum_style)
+            self.draw_footer(canvas, doc, self.footer_even_paragraph, self.footer_even_pagenum_style)
         elif doc.pageTemplate.id == 'Odd':
             self.draw_header(canvas, doc, self.header_odd_paragraph, self.header_odd_pagenum_style)
-
-        self.draw_footer(canvas, doc, self.footer_pagenum_style)
+            self.draw_footer(canvas, doc, self.footer_odd_paragraph, self.footer_odd_pagenum_style)
+        elif doc.pageTemplate.id == 'First':
+            self.draw_header(canvas, doc, self.header_first_paragraph, self.header_first_pagenum_style)
+            self.draw_footer(canvas, doc, self.footer_first_paragraph, self.footer_first_pagenum_style)
 
     def draw_header(self, canvas, doc, paragraph: Paragraph, pagenum_style: ParagraphStyle):
         """Draws the header onto the canvas.
@@ -746,76 +749,76 @@ class Kassia:
             canvas.setStrokeColor(style.borderColor)
             canvas.setLineWidth(style.borderWidth)
             canvas.line(
-                self.doc.left,
-                self.doc.top,
-                self.doc.right,
-                self.doc.top)
+                doc.left,
+                doc.top,
+                doc.right,
+                doc.top)
 
         canvas.setFont(style.fontName, style.fontSize)
         canvas.setFillColor(style.textColor)
 
-        y_pos = self.doc.pagesize[1] - (self.doc.topMargin * 0.85)
+        y_pos = doc.pagesize[1] - (doc.topMargin * 0.85)
 
         if style.alignment == TA_LEFT:
-            x_pos = self.doc.left
+            x_pos = doc.left
             canvas.drawString(x_pos, y_pos, paragraph.text)
         elif style.alignment == TA_RIGHT:
-            x_pos = self.doc.right
+            x_pos = doc.right
             canvas.drawRightString(x_pos, y_pos, paragraph.text)
         elif style.alignment == TA_CENTER:
-            x_pos = self.doc.center
+            x_pos = doc.center
             canvas.drawCentredString(x_pos, y_pos, paragraph.text)
 
         if pagenum_style is not None:
             if pagenum_style.alignment == TA_LEFT:
-                canvas.drawString(self.doc.left, y_pos, str(canvas.getPageNumber()))
+                canvas.drawString(doc.left, y_pos, str(canvas.getPageNumber()))
             elif pagenum_style.alignment == TA_RIGHT:
-                canvas.drawRightString(self.doc.right, y_pos, str(canvas.getPageNumber()))
+                canvas.drawRightString(doc.right, y_pos, str(canvas.getPageNumber()))
             elif pagenum_style.alignment == TA_CENTER:
-                canvas.drawCentredString(self.doc.center, y_pos, str(canvas.getPageNumber()))
+                canvas.drawCentredString(doc.center, y_pos, str(canvas.getPageNumber()))
 
-    def draw_footer(self, canvas, doc, pagenum_style: ParagraphStyle):
+    def draw_footer(self, canvas, doc, paragraph: Paragraph, pagenum_style: ParagraphStyle):
         """Draws the footer onto the canvas.
         :param canvas: Canvas, passed from document.build.
         :param doc: SimpleDocTemplate, passed from document.build.
         :param pagenum_style: The style of page number to draw.
         """
-        if not self.footer_paragraph:
+        if not paragraph:
             return
 
-        style = self.footer_paragraph.style
+        style = paragraph.style
 
         if style.borderWidth:
             canvas.setStrokeColor(style.borderColor)
             canvas.setLineWidth(style.borderWidth)
             canvas.line(
-                self.doc.left,
-                self.doc.bottom,
-                self.doc.right,
-                self.doc.bottom)
+                doc.left,
+                doc.bottom,
+                doc.right,
+                doc.bottom)
 
         canvas.setFont(style.fontName, style.fontSize)
         canvas.setFillColor(style.textColor)
 
-        y_pos = self.doc.bottomMargin / 2
+        y_pos = doc.bottomMargin / 2
 
         if style.alignment == TA_LEFT:
-            x_pos = self.doc.left
-            canvas.drawString(x_pos, y_pos, self.footer_paragraph.text)
+            x_pos = doc.left
+            canvas.drawString(x_pos, y_pos, paragraph.text)
         elif style.alignment == TA_RIGHT:
-            x_pos = self.doc.right
-            canvas.drawRightString(x_pos, y_pos, self.footer_paragraph.text)
+            x_pos = doc.right
+            canvas.drawRightString(x_pos, y_pos, paragraph.text)
         elif style.alignment == TA_CENTER:
-            x_pos = self.doc.center
-            canvas.drawCentredString(x_pos, y_pos, self.footer_paragraph.text)
+            x_pos = doc.center
+            canvas.drawCentredString(x_pos, y_pos, paragraph.text)
 
         if pagenum_style is not None:
             if pagenum_style.alignment == TA_LEFT:
-                canvas.drawString(self.doc.left, y_pos, str(canvas.getPageNumber()))
+                canvas.drawString(doc.left, y_pos, str(canvas.getPageNumber()))
             elif pagenum_style.alignment == TA_RIGHT:
-                canvas.drawRightString(self.doc.right, y_pos, str(canvas.getPageNumber()))
+                canvas.drawRightString(doc.right, y_pos, str(canvas.getPageNumber()))
             elif pagenum_style.alignment == TA_CENTER:
-                canvas.drawCentredString(self.doc.center, y_pos, str(canvas.getPageNumber()))
+                canvas.drawCentredString(doc.center, y_pos, str(canvas.getPageNumber()))
 
     def line_break(self, syl_list: List[Syllable], starting_pos: Coord, line_width: int, line_spacing: int,
                    syl_spacing: int) -> List[SyllableLine]:
