@@ -30,6 +30,10 @@ class Neume:
         self.name: str = name  # The name in standard BNML
         self.char: str = char  # The character in a TTF
         self.font_family: str = font_family  # The font family name
+
+        if font_fullname not in pdfmetrics.getRegisteredFontNames():
+            raise NameError("Neume font {} was not found and cannot be used.".format(font_fullname))
+
         self.font_fullname: str = font_fullname  # The specific font file name
         self.font_size: int = font_size
         self.color: str = color
@@ -42,6 +46,3 @@ class Neume:
         self.keep_with_next: bool = keep_with_next
         self.offset: List[float] = offset
         self.category: NeumeType = category
-
-        if self.font_fullname not in pdfmetrics.getRegisteredFontNames():
-            raise Exception("Neume font {} is not registered".format(self.font_fullname))
