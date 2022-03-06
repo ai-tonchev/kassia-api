@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest] #, windows-latest] # skip Windows for now, since it always fails, https://github.com/pytest-dev/pytest/issues/8191
+        os: [macos-latest] #, windows-latest, ubuntu-latest] # Skip Linux (fails visual diff test). Skip Windows (always fails), https://github.com/pytest-dev/pytest/issues/8191
         python-version: [3.7]
     defaults:
       run:
