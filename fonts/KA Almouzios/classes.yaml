@@ -433,8 +433,15 @@ conditional_neumes:
   spec-apos-klasU:
     base_neume:
       - apos
+      - olig
     component_glyphs:
       - klasU
+      - kentU_klasU
+      - kentU_klasU_psefD
+      - kentU_klasU_homaD
+      - kentU_hypsUR
+      - kentU_hypsU2
+      - kentU_hypsUR_hypsU2
     replace_glyph:
       klasU
     draw_glyph:
