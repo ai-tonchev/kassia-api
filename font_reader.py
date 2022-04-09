@@ -68,7 +68,7 @@ def _load_font_config(filepath: str, validator: Schema) -> Dict:
             font_config = yaml.load(fp)
             validator.validate(font_config)
         except (IOError, YAMLError, SchemaError) as exc:
-            logging.error("Problem reading {} font configuration. {}".format(filepath, exc))
+            logging.error("Failed to read {} font configuration. {}".format(filepath, exc))
             font_config = None
         except Exception as exc:
             raise exc
@@ -98,7 +98,7 @@ def find_and_register_fonts(check_sys_fonts: bool = False) -> Dict:
     try:
         ff.search()
     except (KeyError, Exception) as fferror:
-        logging.warning("Problem parsing font: {}".format(fferror))
+        logging.warning("Font search exception: {}".format(fferror))
 
     _register_fonts(ff)
 
@@ -125,7 +125,7 @@ def _register_fonts(font_finder: fontfinder.FontFinder):
                     pdfmetrics.registerFont(ttfont)
                     pdfmetrics.registerFontFamily(family_name)
                 except TTFError as e:
-                    logging.warning("Could not register font {}, {}".format(family_name, e))
+                    logging.warning("Failed to register font {}, {}".format(family_name, e))
                     continue
             elif len(fonts_in_family) > 1:
                 font_name = family_name + "-".encode() + font.styleName
@@ -135,7 +135,7 @@ def _register_fonts(font_finder: fontfinder.FontFinder):
                     pdfmetrics.registerFont(ttfont)
                     addMapping(font.familyName, font.isBold, font.isItalic, font_name)
                 except TTFError as e:
-                    logging.warning("Could not register font {}, {}".format(family_name, e))
+                    logging.warning("Failed to register font {}, {}".format(family_name, e))
                     continue
 
 
