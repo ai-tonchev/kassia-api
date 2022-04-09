@@ -309,7 +309,7 @@ class Kassia:
         para = Paragraph(paragraph_text, paragraph_style)
         self.story.append(para)
 
-    def _parse_score(self, score_elem: Element):
+    def _parse_score(self, score_elem: Element) -> Score:
         syl_list: List[Syllable] = []
         dropcap = None
         dropcap_offset = 0
@@ -339,8 +339,7 @@ class Kassia:
         if self.scoreStyleSheet['score'].alignment == TA_JUSTIFY and len(lines_list) > 1:
             lines_list: List[SyllableLine] = self.line_justify(lines_list, self.doc.width, dropcap_offset)
 
-        score = Score(lines_list, dropcap, self.doc.width)
-        self.story.append(score)
+        return Score(lines_list, dropcap, self.doc.width)
 
     def _parse_dropcap(self, dc_elem: Element) -> Dropcap:
         dropcap_style = self.scoreStyleSheet['dropcap']

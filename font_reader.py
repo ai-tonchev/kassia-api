@@ -42,6 +42,7 @@ def _get_neume_dict(font_folder_path: str) -> Dict:
     """Search folder path for font configs, load them, and return in Dict.
 
     :param font_folder_path: Path to font.
+    :return: Dictionary representation of yaml config file.
     """
     font_config_dict = {}
     for glyphname_path in Path(font_folder_path).rglob('glyphnames.yaml'):
@@ -54,7 +55,7 @@ def _get_neume_dict(font_folder_path: str) -> Dict:
 
 
 def _load_font_config(filepath: str, validator: Schema) -> Dict:
-    """Read, load, and validate a font configuration, and return it as a Dict.
+    """Read, load, and validate a font configuration (in YAML), and return it as a Dict.
 
     :param filepath: Path of font config file.
     :param validator: Schema to validate against.
