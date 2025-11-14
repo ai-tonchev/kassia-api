@@ -3,8 +3,8 @@ from typing import List
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import Flowable
 
-from drop_cap import Dropcap
-from syllable_line import SyllableLine
+from .drop_cap import Dropcap
+from .syllable_line import SyllableLine
 
 
 class Score(Flowable):

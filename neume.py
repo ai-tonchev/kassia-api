@@ -3,7 +3,7 @@ from typing import List
 
 from reportlab.pdfbase import pdfmetrics
 
-from neume_type import NeumeType
+from .neume_type import NeumeType
 
 
 class NeumeBnml:

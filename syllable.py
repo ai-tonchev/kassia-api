@@ -1,12 +1,12 @@
 from reportlab.platypus import Flowable
 from typing import Tuple
 
-from coord import Coord
-from lyric import Lyric
-from neume import Neume
-from neume_chunk import NeumeChunk
-from neume_type import NeumeType
-from syllable_type import SyllableType
+from .coord import Coord
+from .lyric import Lyric
+from .neume import Neume
+from .neume_chunk import NeumeChunk
+from .neume_type import NeumeType
+from .syllable_type import SyllableType
 
 
 class Syllable(Flowable):

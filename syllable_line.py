@@ -5,9 +5,9 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import Flowable
 
-from coord import Coord
-from lyric import Lyric
-from syllable import Syllable
+from .coord import Coord
+from .lyric import Lyric
+from .syllable import Syllable
 
 
 class SyllableLine(Flowable, MutableSequence):

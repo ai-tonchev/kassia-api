@@ -1,6 +1,6 @@
 from reportlab.pdfbase import pdfmetrics
 
-from connector import Connector
+from .connector import Connector
 
 
 class Lyric:

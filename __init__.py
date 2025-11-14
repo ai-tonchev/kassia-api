@@ -11,16 +11,16 @@ from reportlab.lib.styles import (ParagraphStyle, StyleSheet1,
 from reportlab.pdfbase import pdfmetrics
 from reportlab.platypus import PageBreak, Paragraph, Spacer
 
-from complex_doc_template import ComplexDocTemplate
-from coord import Coord
-from drop_cap import Dropcap
-from font_reader import find_and_register_fonts
-from lyric import Lyric
-from neume import Neume, NeumeBnml, NeumeType
-from neume_chunk import NeumeChunk
-from score import Score
-from syllable import Syllable
-from syllable_line import SyllableLine
+from .complex_doc_template import ComplexDocTemplate
+from .coord import Coord
+from .drop_cap import Dropcap
+from .font_reader import find_and_register_fonts
+from .lyric import Lyric
+from .neume import Neume, NeumeBnml, NeumeType
+from .neume_chunk import NeumeChunk
+from .score import Score
+from .syllable import Syllable
+from .syllable_line import SyllableLine
 
 
 class Kassia:

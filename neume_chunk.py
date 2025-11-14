@@ -1,6 +1,6 @@
 from collections.abc import MutableSequence
 
-from neume import Neume
+from .neume import Neume
 
 
 class NeumeChunk(MutableSequence):
