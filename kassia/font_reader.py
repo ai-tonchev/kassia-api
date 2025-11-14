@@ -87,14 +87,14 @@ def find_and_register_fonts(check_sys_fonts: bool = False) -> Dict:
     ff = fontfinder.FontFinder(useCache=False)
 
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    local_font_dir = os.path.join(str(base_dir), 'kassia/fonts')
+    local_font_dir = os.path.join(str(base_dir), 'kassia/fonts/')
     logging.info("Searching {} path for local fonts...".format(local_font_dir))
     
     ff.addDirectory(local_font_dir, recur=True)
 
     if check_sys_fonts:
         system_font_dirs = rl_settings.TTFSearchPath
-        ff.addDirectories(system_font_dirs)
+        ff.addDirectory(system_font_dirs, recur=True)
 
     try:
         ff.search()

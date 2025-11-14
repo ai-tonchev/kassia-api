@@ -12,7 +12,7 @@ import fitz  # PyMuPDF
 
 import music_parser as prs
 # import project_organiser as porg
-from kassia import Kassia
+from kassia_main import Kassia
 
 
 absolute_path = os.path.dirname(__file__)

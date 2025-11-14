@@ -11,16 +11,16 @@ from reportlab.lib.styles import (ParagraphStyle, StyleSheet1,
 from reportlab.pdfbase import pdfmetrics
 from reportlab.platypus import PageBreak, Paragraph, Spacer
 
-from builder.complex_doc_template import ComplexDocTemplate
-from builder.coord import Coord
-from builder.drop_cap import Dropcap
-from builder.font_reader import find_and_register_fonts
-from builder.lyric import Lyric
-from builder.neume import Neume, NeumeBnml, NeumeType
-from builder.neume_chunk import NeumeChunk
-from builder.score import Score
-from builder.syllable import Syllable
-from builder.syllable_line import SyllableLine
+from kassia.complex_doc_template import ComplexDocTemplate
+from kassia.coord import Coord
+from kassia.drop_cap import Dropcap
+from kassia.font_reader import find_and_register_fonts
+from kassia.lyric import Lyric
+from kassia.neume import Neume, NeumeBnml, NeumeType
+from kassia.neume_chunk import NeumeChunk
+from kassia.score import Score
+from kassia.syllable import Syllable
+from kassia.syllable_line import SyllableLine
 
 
 class Kassia:
@@ -990,7 +990,7 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
     if len(sys.argv) == 1:
         logging.error("Input XML file required.")
         sys.exit(1)

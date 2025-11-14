@@ -2,7 +2,7 @@ from pathlib import Path
 
 from diff_pdf_visually import pdfdiff
 
-from kassia import Kassia
+from kassia_main import Kassia
 
 
 def test_chronos(tmp_path: Path):
