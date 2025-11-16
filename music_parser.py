@@ -1,4 +1,5 @@
 import subprocess
+import io
 
 def tag(content: str, tag: str, params: dict = None) -> str:
 
@@ -257,7 +258,7 @@ class Music:
             f.write(self.render().encode())
 
     def write(self, buffer):
-        buffer.write(self.render())
+        buffer.write(self.render().encode())
 
 
 def score_from_txt(raw_score:str):

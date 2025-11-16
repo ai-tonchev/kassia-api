@@ -47,11 +47,11 @@ class Kassia:
         self.init_styles()
         self.input_filename: str = input_filename
 
-        try:
-            open(input_filename, "r")
-        except IOError:
-            logging.error("XML file not readable.")
-            return
+        # try:
+        #     open(input_filename, "r")
+        # except IOError:
+        #     logging.error("XML file not readable.")
+        #     return
 
         self.neume_info_dict: Dict = find_and_register_fonts(use_system_fonts)
         self.parse_file()
