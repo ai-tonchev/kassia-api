@@ -19,7 +19,7 @@
 (mode: 5)
 (base: Па)
 
-[Въз: ison][кре: ison][се: olig-kentU][е: ken2][е: olig][е: olig-ken2DR-gorgU][: bare][нї: apos-klasU][ѧ: syne][а: olig-gorgU-homaD][а: apos][день: peta-oligU][:hypo-gorgUR-haplD][:malfa-mkeU]
+[3: ison][кре: ison][се: olig-kentU][е: ken2][е: olig][е: olig-ken2DR-gorgU][: bare][нї: apos-klasU][ѧ: syne][а: olig-gorgU-homaD][а: apos][день: peta-oligU][:hypo-gorgUR-haplD][:malfa-mkeU]
 
 [и:ison][про:ison][свѣ:olig][тим:olig-ken2U-psefD][сѧ:apos][а:apos][:bare][тъ:olig-aposUL-ken2UR-gorgU2R][ър:apos-apos-gorgU][:bare][же:ison][е:apos-gorgU][е:olig-ken2U-gorgU2][ство: peta-oligU][омъ:hypo-gorgUR-haplD][:malfa-mkeU]
 

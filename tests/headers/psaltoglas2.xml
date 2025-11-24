@@ -20,7 +20,7 @@
             <para-style name="header" font_family="Fedorovsk Unicode" font_size="14" align="center" />
             <para-style name="footer" font_family="Fedorovsk Unicode" font_size="14" align="center" />
             <para-style name="centered-martyria" font_family="Fedorovsk Unicode" font_size="14" color="#cf232b" align="center" space_before="12" space_after="12" />
-            <score-style font_family="KA Almouzios" font_size="30" align="justify" word_spacing="0" leading="60" />
+            <score-style font_family="KA Arvanitis" font_size="30" align="justify" word_spacing="0" leading="60" />
             <neume-style type="ordinary" color="#000000" />
             <neume-style type="accidental" color="#bb000e" />
             <neume-style type="chronos" color="#bb000e" />

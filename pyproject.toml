@@ -1,16 +1,17 @@
 [tool.poetry]
-name = "kassia"
-version = "0.3"
-description = "A CLI program for exporting scores in Byzantine Notation"
-authors = ["t-bullock <5100363+t-bullock@users.noreply.github.com>"]
+name = "kassia-api"
+version = "1.0"
+description = "An API for exporting scores in Byzantine Notation"
+authors = ["t-bullock <5100363+t-bullock@users.noreply.github.com>", "ai-tonchev"]
 license = "MIT"
-repository = "https://github.com/t-bullock/kassia"
+repository = "https://github.com/ai-tonchev/kassia-app"
 
 [tool.poetry.dependencies]
 python = "^3.7"
 reportlab = ">=3.6.0"
 ruyaml = ">=0.20.0"
 schema = ">=0.7.4"
+fastapi[standard] = "*"
 
 [tool.poetry.dev-dependencies]
 pylint = "*"
