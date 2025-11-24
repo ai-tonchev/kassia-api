@@ -15,4 +15,5 @@ ruyaml
 schema
 fastapi
 python-multipart
+uvicorn
 
