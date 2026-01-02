@@ -75,7 +75,7 @@ class Score:
     Contains the syllables and other metadata for a score (a single hymn) and can parse it into kassia-compatible xml.
     '''
 
-    def __init__(self, syllables: list, mode: int = None, mode_base: str = None, dropcap:bool = True) -> None:
+    def __init__(self, syllables: list, mode: int = None, mode_base: str = None, dropcap:bool = True, lang: str = 'EN') -> None:
 
         self.dropcap = dropcap
 
@@ -84,6 +84,7 @@ class Score:
         
         self.mode = mode
         self.mode_base = mode_base
+        self.lang = lang
 
         if not syllables:
             raise Exception('No syllables provided!')
@@ -96,19 +97,26 @@ class Score:
 
     def render_mode(
             self, 
-            lang: str = 'CS', 
+            
             size: int = 30, 
             font_family: str = "KA New Stathis Martyria"
         ) -> str:
+        
+        lang = self.lang.upper()
 
         if self.mode is None:
             return ''
+        
+        
 
         mode_terms = {
             'CS': 'Гла́съ',
             'EL': ' Ἦχος',
             'EN': 'Mode'
         }
+        
+        if lang not in mode_terms.keys():
+            raise Exception(f'Unsupported language for mode martyries: {lang}')
 
         mode_martyries = {
             1: 'i',
@@ -285,11 +293,13 @@ def score_from_txt(raw_score:str):
 
     base = params.get('base')
     mode = params.get('mode')
+    lang = params.get('lang', 'EN')
+    dropcap = params.get('dropcap', 'True').lower() == 'true'
 
     if isinstance(mode, str) and mode.isdigit():
         mode = int(mode)
 
-    score = Score(syls, mode = mode, dropcap = True, mode_base=base)
+    score = Score(syls, mode = mode, dropcap = dropcap, mode_base=base, lang=lang)
 
     return score
 
